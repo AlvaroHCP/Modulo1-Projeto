@@ -1,4 +1,4 @@
-function loginPage() {
+function LoginPage() {
     return (
         <>
             <h1>Login Page</h1>
@@ -6,4 +6,4 @@ function loginPage() {
     )
 }
 
-export { loginPage }
+export { LoginPage }
