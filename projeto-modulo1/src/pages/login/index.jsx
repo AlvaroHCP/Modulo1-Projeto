@@ -1,38 +1,65 @@
 import { useForm } from "react-hook-form"
-import { LoginStyled } from './styled'
+import { DivStyled, LoginStyled, FormStyled, ButtonDiv } from './styled'
+// import { Link } from "react-router-dom"
 
 function LoginPage() {
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = (dataFromForm) => {
-        // alert('Proceed...')
-        // alert(dataFromForm.email)
-        // alert(dataFromForm.password)
+
+        alert(`Usuário logado com sucesso!
+
+E-mail: ${dataFromForm.email}
+
+Senha: ${dataFromForm.password}
+
+Bem vindo!`)
+
         localStorage.setItem('user', JSON.stringify(dataFromForm))
+
     }
 
 
     return (
-        <>
-            <LoginStyled>
+        <DivStyled>
+            <LoginStyled >
                 <h1>Login Page</h1>
-                <form>
-                    <input type="email" {...register('email', {
-                        required: true,
-                        pattern: /[A-Za-z0-9]{3}@*\.[a-z]{2}/,
-                        setValueAs: v => v.trim()
-                    })} />
-                    <input type="password" {...register('password', {
-                        required: true,
-                        pattern: /[a-zA-Z0-9@!#]{8}/
-                    })} />
+                <FormStyled>
+                    <label htmlFor="email">E-mail:</label>
+                    <input
+                        id="email"
+                        type="email"
+                        placeholder="Formato: email@dominio.algo"
+                        {...register('email', {
+                            required: true,
+                            pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]{1,}$/,
+                            setValueAs: v => v.trim().replace(" ", "")
+                        })}
+                    />
+                    {errors.email && errors.email.type === "pattern" && (
+                        // <p role="alert">Fora do formato: email@dominio.algo</p>
+                        <input role="alert" placeholder="Fora do formato: email@dominio.algo" disabled style={{ backgroundColor: 'pink', border: '1px solid red', borderRadius: '3px' }} />
+                    )}
 
-                    <a href="#">Esqueci minha senha?</a>
+                    <label htmlFor="password">Senha:</label>
+                    <input id="password" type="password" {...register('password', {
+                        required: true,
+                        pattern: /^[A-Za-z\d@$!%*#?&]{8,}$/
+                    })}
+                        placeholder="Senha com 8 ou mais caracteres."
+                    />
+                    {errors.password && errors.password.type === "pattern" && (
+                        // <p role="alert">Fora do formato: email@dominio.algo</p>
+                        <input role="alert" placeholder="Senha com menos de 8 caracteres!" disabled style={{ backgroundColor: 'pink', border: '1px solid red', borderRadius: '3px' }} />
+                    )}
 
-                    <button onClick={handleSubmit(onSubmit)} >Entrar</button>
-                </form >
+                    {/* <Link to={"#"}>Esqueci minha senha?</Link> */}
+                    <ButtonDiv>
+                        <button onClick={handleSubmit(onSubmit)} >Entrar</button>
+                    </ButtonDiv>
+                </FormStyled>
             </LoginStyled>
-        </>
+        </DivStyled>
     )
 }
 
