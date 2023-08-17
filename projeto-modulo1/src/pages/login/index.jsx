@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form"
 import { DivStyled, LoginStyled, FormStyled, ButtonDiv } from './styled'
-// import { Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 function LoginPage() {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -37,8 +37,15 @@ Bem vindo!`)
                         })}
                     />
                     {errors.email && errors.email.type === "pattern" && (
-                        // <p role="alert">Fora do formato: email@dominio.algo</p>
-                        <input role="alert" placeholder="Fora do formato: email@dominio.algo" disabled style={{ backgroundColor: 'pink', border: '1px solid red', borderRadius: '3px' }} />
+                        <input
+                            role="alert"
+                            placeholder="Fora do formato: email@dominio.algo"
+                            disabled
+                            style={{
+                                backgroundColor: 'pink',
+                                border: '1px solid red',
+                                borderRadius: '3px'
+                            }} />
                     )}
 
                     <label htmlFor="password">Senha:</label>
@@ -49,11 +56,18 @@ Bem vindo!`)
                         placeholder="Senha com 8 ou mais caracteres."
                     />
                     {errors.password && errors.password.type === "pattern" && (
-                        // <p role="alert">Fora do formato: email@dominio.algo</p>
-                        <input role="alert" placeholder="Senha com menos de 8 caracteres!" disabled style={{ backgroundColor: 'pink', border: '1px solid red', borderRadius: '3px' }} />
+                        <input
+                            role="alert"
+                            placeholder="Senha com menos de 8 caracteres!"
+                            disabled
+                            style={{
+                                backgroundColor: 'pink',
+                                border: '1px solid red',
+                                borderRadius: '3px'
+                            }} />
                     )}
 
-                    {/* <Link to={"#"}>Esqueci minha senha?</Link> */}
+                    <Link to={"#"}>Esqueci minha senha?</Link>
                     <ButtonDiv>
                         <button onClick={handleSubmit(onSubmit)} >Entrar</button>
                     </ButtonDiv>
