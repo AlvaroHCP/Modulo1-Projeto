@@ -95,6 +95,7 @@ Bem vindo!`)
 
                     {openModal == true ? <Modal
                         openDirectly={openModal}
+                        hold={true}
                     // buttonName={'Alvinho'}
                     >
                         <ButtonAreaStyled>
