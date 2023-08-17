@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form"
 import { DivStyled, LoginStyled, FormStyled, ButtonDiv } from './styled'
 import { Link } from "react-router-dom"
+import { Modal } from "../../components/Modal";
 
 function LoginPage() {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -72,6 +73,7 @@ Bem vindo!`)
                         <button onClick={handleSubmit(onSubmit)} >Entrar</button>
                     </ButtonDiv>
                 </FormStyled>
+                <Modal />
             </LoginStyled>
         </DivStyled>
     )

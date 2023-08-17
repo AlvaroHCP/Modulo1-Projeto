@@ -45,6 +45,12 @@ input {
     margin-top: 10px;
     margin-bottom: 20px;
     display: block;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(255, 0, 0));
+    
+    :focus{
+        /* border: 3px solid red; */
+    }
+
     /* :invalid{
         border-color: red;
         border-radius: 5px;
@@ -59,14 +65,13 @@ input {
 /* input[required] {
     :focus{
         border-color: red;
+
     }
 } */
 
 Link {
  
 }
-
-
 `
 
 const ButtonDiv = styled.div`
