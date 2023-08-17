@@ -2,7 +2,14 @@ import { InputForm } from "../../components/inputField"
 
 function DrugStoreSubscription() {
     return (
-        <InputForm />
+        <form>
+            <InputForm
+                name={'SocialName'}
+                title={'Razão Social'}
+                type={'text'}
+                required={true}
+            />
+        </form>
     )
 }
 
