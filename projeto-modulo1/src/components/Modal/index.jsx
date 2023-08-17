@@ -33,12 +33,17 @@ function Modal() {
                 aria-describedby="alert-dialog-description"
             >
                 <DialogTitle id="alert-dialog-title">
-                    {"Use Google's location service?"}
+                    <h2 style={{ textAlign: 'center' }}>Seja muito bem vindo!</h2>
+                    <h3 style={{ marginBottom: '0px', textAlign: 'center' }}>Para que página deseja ir?</h3>
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                        Let Google help apps determine location. This means sending anonymous
-                        location data to Google, even when no apps are running.
+                        <p>Você pode esolher a Página de Medicamentos, onde verá todo o nosso estoque
+                            dos mais variados produtos farmacêuticos disponíveis, ou pode escolher
+                            procurar uma farmácia perto de você, no Mapa de Farmácias.</p>
+
+                        <p>É só clicar em um dos botões correspondentes abaixo, e será redirecionado
+                            para a página em questão.</p>
                     </DialogContentText>
                 </DialogContent>
                 <ButtonAreaStyled>
