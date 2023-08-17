@@ -5,30 +5,33 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useNavigate } from 'react-router-dom';
-import { ButtonAreaStyled } from './styled';
+
+
 
 // function Modal({ children }, { validation, dataFromForm, open }) {
-function Modal() {
+function Modal({ children, buttonName = '', openDirectly }) {
+    console.log('Received OpenModal = ', openDirectly)
+    console.log('Received ButtonName = ', buttonName)
 
-    // const [open, setOpen] = useState(false)
-    const navigate = useNavigate()
-    const [open, setOpen] = useState(true)
+    console.log('AAAAA', openDirectly != true ? openDirectly = false : openDirectly = true)
+    // console.log('OpenModal = ', openDirectly)
 
-    // const handleClickOpen = () => {
-    //     setOpen(true)
-    // };
+    const [open, setOpen] = useState(openDirectly == true ? openDirectly = true : openDirectly = false)
+    console.log(open)
 
-    const handleClose = (path) => {
+    const handleClickOpen = () => {
+        buttonName != '' ? setOpen(true) : setOpen(false)
+    };
+
+    const handleClose = () => {
         // setOpen(false)
-        navigate(path)
     };
 
     return (
         <div>
-            {/* <ButtonDiv>
-                <button onClick={(e) => handleClickOpen(e)} >Entrar</button>
-            </ButtonDiv> */}
+            {buttonName != '' ? <Button>
+                <button onClick={handleClickOpen} >Entrar</button>
+            </Button> : <></>}
 
             <Dialog
                 open={open}
@@ -50,20 +53,7 @@ function Modal() {
                             para a página em questão.</p>
                     </DialogContentText>
                 </DialogContent>
-                <ButtonAreaStyled>
-                    <Button
-                        onClick={() => navigate('/ListaMedicamentos')}
-                        autoFocus
-                    >
-                        Página de Medicamentos
-                    </Button>
-                    <Button
-                        onClick={() => navigate('/MapaFarmacias')}
-                        autoFocus
-                    >
-                        Mapa de Farmácias
-                    </Button>
-                </ButtonAreaStyled>
+                {children}
             </Dialog>
         </div>
     );

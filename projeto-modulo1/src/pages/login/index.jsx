@@ -1,13 +1,17 @@
 import { useForm } from "react-hook-form"
 import { DivStyled, LoginStyled, FormStyled, ButtonDiv } from './styled'
 import { Link } from "react-router-dom"
-import { Modal } from "../../components/Modal";
+import { Modal } from "../../components/ModalLogin";
 import { useState } from "react";
+import { ButtonAreaStyled } from "../../components/ModalLogin/styled";
+import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const navigate = useNavigate()
     const user = 'user'
-    const [open, setOpen] = useState(false)
+    const [openModal, setOpenModal] = useState(false)
 
     const onSubmit = (dataFromForm) => {
 
@@ -22,9 +26,10 @@ Bem vindo!`)
 
         localStorage.setItem(user, JSON.stringify(dataFromForm))
 
-        if (JSON.parse(localStorage.getItem(user))?.email) {
-            alert('AAAAAAA')
-            setOpen(true)
+        const read = JSON.parse(localStorage.getItem(user))
+
+        if (read?.email && read?.password) {
+            setOpenModal(true)
         }
     }
 
@@ -86,7 +91,29 @@ Bem vindo!`)
                         </button>
                     </ButtonDiv>
 
-                    {open == true ? <Modal /> : <></>}
+                    {/* {openModal == true ? <Modal /> : <></>} */}
+
+                    {openModal == true ? <Modal
+                        openDirectly={openModal}
+                    // buttonName={'Alvinho'}
+                    >
+                        <ButtonAreaStyled>
+                            <Button
+                                onClick={() => navigate('/ListaMedicamentos')}
+                                autoFocus
+                            >
+                                Página de Medicamentos
+                            </Button>
+                            <Button
+                                onClick={() => navigate('/MapaFarmacias')}
+                                autoFocus
+                            >
+                                Mapa de Farmácias
+                            </Button>
+                        </ButtonAreaStyled>
+                    </Modal> : <></>}
+
+                    {/* <Modal buttonName={'a'} /> */}
 
                 </FormStyled>
             </LoginStyled>
