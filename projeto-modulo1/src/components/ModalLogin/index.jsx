@@ -1,31 +1,35 @@
+import './style.css'
 import { useState } from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useNavigate } from 'react-router-dom';
 import { ButtonAreaStyled } from './styled';
 
+// function Modal({ children }, { validation, dataFromForm, open }) {
 function Modal() {
-    const [open, setOpen] = useState(false);
-    const navigate = useNavigate()
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
+    // const [open, setOpen] = useState(false)
+    const navigate = useNavigate()
+    const [open, setOpen] = useState(true)
+
+    // const handleClickOpen = () => {
+    //     setOpen(true)
+    // };
 
     const handleClose = (path) => {
-        setOpen(false);
+        // setOpen(false)
         navigate(path)
     };
 
     return (
         <div>
-            <Button variant="outlined" onClick={handleClickOpen}>
-                Open alert dialog
-            </Button>
+            {/* <ButtonDiv>
+                <button onClick={(e) => handleClickOpen(e)} >Entrar</button>
+            </ButtonDiv> */}
+
             <Dialog
                 open={open}
                 onClose={handleClose}
@@ -33,8 +37,8 @@ function Modal() {
                 aria-describedby="alert-dialog-description"
             >
                 <DialogTitle id="alert-dialog-title">
-                    <h2 style={{ textAlign: 'center' }}>Seja muito bem vindo!</h2>
-                    <h3 style={{ marginBottom: '0px', textAlign: 'center' }}>Para que página deseja ir?</h3>
+                    <h2>Seja muito bem vindo!</h2>
+                    <h3>Para que página deseja ir?</h3>
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">

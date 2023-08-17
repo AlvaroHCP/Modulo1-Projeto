@@ -2,11 +2,15 @@ import { useForm } from "react-hook-form"
 import { DivStyled, LoginStyled, FormStyled, ButtonDiv } from './styled'
 import { Link } from "react-router-dom"
 import { Modal } from "../../components/Modal";
+import { useState } from "react";
 
 function LoginPage() {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const user = 'user'
+    const [open, setOpen] = useState(false)
 
     const onSubmit = (dataFromForm) => {
+
 
         alert(`Usuário logado com sucesso!
 
@@ -16,8 +20,12 @@ Senha: ${dataFromForm.password}
 
 Bem vindo!`)
 
-        localStorage.setItem('user', JSON.stringify(dataFromForm))
+        localStorage.setItem(user, JSON.stringify(dataFromForm))
 
+        if (JSON.parse(localStorage.getItem(user))?.email) {
+            alert('AAAAAAA')
+            setOpen(true)
+        }
     }
 
 
@@ -70,10 +78,17 @@ Bem vindo!`)
 
                     <Link to={"#"}>Esqueci minha senha?</Link>
                     <ButtonDiv>
-                        <button onClick={handleSubmit(onSubmit)} >Entrar</button>
+                        <button onClick={
+                            handleSubmit(onSubmit)
+
+                        } >
+                            Entrar
+                        </button>
                     </ButtonDiv>
+
+                    {open == true ? <Modal /> : <></>}
+
                 </FormStyled>
-                <Modal />
             </LoginStyled>
         </DivStyled>
     )
