@@ -2,7 +2,7 @@ import './styled.js'
 import { TextField } from "@mui/material";
 
 
-function InputForm({ error, name, title, type, required, readOnly, storage, errorStorage }) {
+function InputForm({ error, name, title, type, required, readOnly, storage, errorStorage, style }) {
 
     required != true ? required = false : required = true
     readOnly != true ? readOnly = false : readOnly = true
@@ -64,6 +64,7 @@ function InputForm({ error, name, title, type, required, readOnly, storage, erro
         <>
             {errorStorage[title] == undefined || errorStorage[title].type != 'pattern' ? (
                 <TextField
+                    style={style}
                     error={error}
                     id={name}
                     variant="standard"
@@ -82,13 +83,16 @@ function InputForm({ error, name, title, type, required, readOnly, storage, erro
                         pattern: type === 'email' ? /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]{1,}$/ :
                             (type === 'password' ? /^[A-Za-z\d@$!%*#?&]{8,}$/ :
                                 (type === 'number' ? /[0-9]/ :
-                                    (type === 'text' ? /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]*$/ : /[a-zA-Z0-9]/))),
+                                    (type === 'text' ? /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]*$/ :
+                                        (type === 'latlon' ? /^(-?\d+(\.\d+)?),\w*(-?\d+(\.\d+)?)$/ :
+                                            /[a-zA-Z0-9]/)))),
                         setValueAs: v => (v == '' || v == undefined) && required == true ?
                             errorStorage[title] = 'pattern' :
                             v
                     })}
                 />) : (
                 <TextField
+                    style={style}
                     error={error = true}
                     id={name}
                     variant="standard"
