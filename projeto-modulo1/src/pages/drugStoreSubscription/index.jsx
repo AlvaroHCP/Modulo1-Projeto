@@ -4,12 +4,63 @@ import { useForm } from "react-hook-form"
 
 function DrugStoreSubscription() {
     const { register, handleSubmit, formState: { errors } } = useForm();
-
+    const regex = /,/gi
 
     const onSubmit = (dataFromForm) => {
-        console.log(dataFromForm)
+        let newStores = []
+        let proceed = false
+
+        // console.log(dataFromForm)
+
+        const invalidFields = Object.keys(dataFromForm).filter((keys) => {
+            // console.log(dataFromForm[keys])
+
+            return (dataFromForm[keys] == '' && !(keys == 'Complemento' || keys == 'Telefone'))
+
+            // if (dataFromForm[keys] == '') {
+            //     let count = 0
+            //     // console.log(`${keys}   ${dataFromForm[keys]}`)
+            //     // console.log(fields.includes(keys))
+            //     fields.map(({ title }) => {
+            //         // title == keys ? error = true : error
+            //         if (title == keys) {
+            //             console.log(fields[count])
+            //             fields[count].error = true
+            //             reRender = true
+            //             console.log(fields[count])
+            //         }
+            //         count++
+            //         return
+            //     })
+            // }
+        })
+
+        // localStorage.setItem('DrugStores', JSON.stringify(fields))
+
+        if (invalidFields.length == 0) {
+            proceed = true
+            alert(`
+            Cadastro realizado com sucesso!!`)
+        } else {
+            alert(`
+        O(s) seguinte(s) campo(s) precisa(m) de informação: 
+        
+                                        ${invalidFields.toString().replaceAll(regex, '\n\n                                        ')}
+                                            
+                                            `)
 
 
+        }
+
+        newStores = localStorage.getItem('DrugStores') ?
+            [...JSON.parse(localStorage.getItem('DrugStores')), dataFromForm] :
+            [dataFromForm]
+
+        // console.log(loadedStores)
+
+        proceed ?
+            localStorage.setItem('DrugStores', JSON.stringify(newStores)) :
+            proceed
     }
 
 
@@ -34,8 +85,8 @@ function DrugStoreSubscription() {
 
 
     const fields =
-    {
-        'Data': [
+        [
+
             {
                 name: 'SocialName',
                 title: 'Razão Social',
@@ -78,9 +129,6 @@ function DrugStoreSubscription() {
                 required: true,
                 error: false,
             },
-        ],
-
-        'CompleteAdress': [
             {
                 name: 'PostalCode',
                 title: 'CEP',
@@ -144,9 +192,8 @@ function DrugStoreSubscription() {
                 required: true,
                 error: false,
             },
-        ],
-    }
 
+        ]
 
 
     const style = { width: '200px', margin: '30px' }
@@ -155,7 +202,7 @@ function DrugStoreSubscription() {
     return (
         <form >
 
-            {fields['Data'].map(({ name, title, type, required, error }) => {
+            {fields.map(({ name, title, type, required, error }) => {
                 return (
                     <InputForm
                         key={name}
@@ -169,25 +216,8 @@ function DrugStoreSubscription() {
                         style={style}
                     />
                 )
-            })}
-
-            {fields['CompleteAdress'].map(({ name, title, type, required, error }) => {
-                return (
-                    <InputForm
-                        key={name}
-                        error={error}
-                        name={name}
-                        title={title}
-                        type={type}
-                        required={required}
-                        storage={register}
-                        errorStorage={errors}
-                        style={style}
-                    />
-                )
-            })}
-
-
+            })
+            }
 
 
             {/* <TextField
