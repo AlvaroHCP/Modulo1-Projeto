@@ -10,12 +10,12 @@ function NotFound404() {
         navigate(path)
     }
 
-    useEffect(() => {
-        setTimeout(() => {
-            goTo('/')
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         goTo('/')
 
-        }, timer)
-    })
+    //     }, timer)
+    // })
 
     const goBack = (event) => {
         event.preventDefault
