@@ -1,10 +1,29 @@
 import { InputForm } from "../../components/inputField"
 import { useForm } from "react-hook-form"
+import { FindPostalCode } from '../../services/ViaCepAPI'
+import { useEffect } from "react";
 
 
 function DrugStoreSubscription() {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, watch, handleSubmit, formState: { errors } } = useForm();
     const regex = /,/gi
+
+
+
+    let watchValues = watch(['CNPJ', 'Celular', 'CEP', 'Latitude', 'Longitude'])
+
+    useEffect(() => {
+        // console.log(watchValues, watchValues[0]?.length, watchValues[1]?.length, watchValues[2]?.length, watchValues[3]?.length, watchValues[4]?.length)
+
+        if (watchValues[2].length == 8) {
+            const response = FindPostalCode(watchValues[2])
+
+            console.log(response)
+        }
+
+    }, [watchValues])
+
+
 
     const onSubmit = (dataFromForm) => {
         let newStores = []
@@ -199,14 +218,63 @@ function DrugStoreSubscription() {
     const style = { width: '200px', margin: '30px' }
 
 
+
+
     return (
         <form >
 
             {fields.map(({ name, title, type, required, error }) => {
+
+                const defaultValue = (
+                    type == 'text' ? title :
+                        (type == 'email' ? 'nome@email.com' :
+                            (type == 'number' ? '0' :
+                                (type == 'latlon' ? '-00,00' : '--------')))
+                )
+
+                let isRed
+
+                switch (title) {
+                    case 'email':
+                        isRed = error
+
+                        break
+
+                    case 'CNPJ':
+                        isRed = ((watchValues[0]?.length != 8) || error)
+
+                        break
+
+                    case 'Celular':
+                        isRed = ((watchValues[1]?.length != 8) || error)
+
+                        break
+
+                    case 'CEP':
+                        isRed = watchValues[2]?.length != 8 || error
+
+                        break
+
+                    case 'Latitude':
+                        isRed = ((watchValues[3]?.length != 8) || error)
+
+                        break
+
+                    case 'Longitude':
+                        isRed = ((watchValues[4]?.length != 8) || error)
+
+                        break
+
+
+                    default:
+
+                        break
+                }
+
                 return (
                     <InputForm
                         key={name}
-                        error={error}
+                        error={isRed}
                         name={name}
                         title={title}
                         type={type}
@@ -214,7 +282,40 @@ function DrugStoreSubscription() {
                         storage={register}
                         errorStorage={errors}
                         style={style}
+                        defaultValue={defaultValue}
                     />
+
+
+                    // <TextField
+                    //     key={name}
+                    //     style={style}
+                    //     // error={error}
+                    //     error={watchValues.length == 8 && (error[title] == undefined || error[title].type != 'pattern') ? false : true}
+                    //     id={name}
+                    //     variant="standard"
+                    //     required={required}
+                    //     value={validText}
+                    //     label={title}
+                    //     type={type}
+                    //     helperText={message}
+                    //     defaultValue={defaultField}
+                    //     // onChange={event(title)}
+                    //     InputLabelProps={{
+                    //         shrink: true,
+                    //     }}
+                    //     // InputProps={{
+                    //     //     readOnly: false,
+                    //     // }}
+                    //     {...register(title, {
+                    //         pattern: type === 'email' ? /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]{1,}$/ :
+                    //             (type === 'password' ? /^[A-Za-z\d@$!%*#?&]{8,}$/ :
+                    //                 (type === 'number' ? /[0-9]/ :
+                    //                     (type === 'text' ? /^(?!\s*$)[a-z ,.'-~ãõç]+$/i :
+                    //                         (type === 'latlon' ? /^(-+)[*0-9]{2},[*0-9]{1,8}$/ :
+                    //                             /[a-zA-Z0-9]/)))),
+                    //         // validate:
+                    //     })}
+                    // />
                 )
             })
             }
