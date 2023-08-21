@@ -1,25 +1,40 @@
+import axios from 'axios';
 import { InputForm } from "../../components/inputField"
 import { useForm } from "react-hook-form"
-import { FindPostalCode } from '../../services/ViaCepAPI'
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 function DrugStoreSubscription() {
     const { register, watch, handleSubmit, formState: { errors } } = useForm();
     const regex = /,/gi
-
+    const [data, setData] = useState()
 
 
     let watchValues = watch(['CNPJ', 'Celular', 'CEP', 'Latitude', 'Longitude'])
 
+
     useEffect(() => {
-        // console.log(watchValues, watchValues[0]?.length, watchValues[1]?.length, watchValues[2]?.length, watchValues[3]?.length, watchValues[4]?.length)
 
-        if (watchValues[2].length == 8) {
-            const response = FindPostalCode(watchValues[2])
+        const FindPostalCode = async () => {
+            try {
+                if (watchValues[2]?.length == 8) {
+                    // console.log(watchValues[2])
+                    const data = await axios.get(`https://viacep.com.br/ws/${watchValues[2]}/json/`)
 
-            console.log(response)
+                    if (data.data) {
+                        console.log(data.data)
+                        setData(data.data)
+                    }
+                }
+
+            } catch (error) {
+                alert(`${error}
+                
+                O CEP informado é inválido.`)
+            }
         }
+
+        FindPostalCode()
 
     }, [watchValues])
 
@@ -221,107 +236,82 @@ function DrugStoreSubscription() {
 
 
     return (
-        <form >
+        <>
+            <form >
 
-            {fields.map(({ name, title, type, required, error }) => {
+                {fields.map(({ name, title, type, required, error }) => {
 
-                const defaultValue = (
-                    type == 'text' ? title :
-                        (type == 'email' ? 'nome@email.com' :
-                            (type == 'number' ? '0' :
-                                (type == 'latlon' ? '-00,00' : '--------')))
-                )
+                    let isRed
 
-                let isRed
+                    const defaultValue = (
+                        type == 'text' ? title :
+                            (type == 'email' ? 'nome@email.com' :
+                                (type == 'number' ? '0' :
+                                    (type == 'latlon' ? '-00,00' : '--------')))
+                    )
 
-                switch (title) {
-                    case 'email':
-                        isRed = error
+                    if (data?.length > 0) {
+                        console.log(Object.keys(data))
 
-                        break
+                    }
 
-                    case 'CNPJ':
-                        isRed = ((watchValues[0]?.length != 8) || error)
+                    switch (title) {
+                        case 'E-mail':
+                            isRed = error
 
-                        break
+                            break
 
-                    case 'Celular':
-                        isRed = ((watchValues[1]?.length != 8) || error)
+                        case 'CNPJ':
+                            isRed = ((watchValues[0]?.length != 8) || error)
 
-                        break
+                            break
 
-                    case 'CEP':
-                        isRed = watchValues[2]?.length != 8 || error
+                        case 'Celular':
+                            isRed = ((watchValues[1]?.length != 8) || error)
 
-                        break
+                            break
 
-                    case 'Latitude':
-                        isRed = ((watchValues[3]?.length != 8) || error)
+                        case 'CEP':
+                            isRed = watchValues[2]?.length != 8 || error
 
-                        break
+                            break
 
-                    case 'Longitude':
-                        isRed = ((watchValues[4]?.length != 8) || error)
+                        case 'Latitude':
+                            isRed = ((watchValues[3]?.length != 8) || error)
 
-                        break
+                            break
+
+                        case 'Longitude':
+                            isRed = ((watchValues[4]?.length != 8) || error)
+
+                            break
 
 
-                    default:
+                        default:
 
-                        break
+                            break
+                    }
+
+                    return (
+                        <InputForm
+                            key={name}
+                            error={isRed}
+                            name={name}
+                            title={title}
+                            type={type}
+                            required={required}
+                            storage={register}
+                            errorStorage={errors}
+                            style={style}
+                            defaultValue={defaultValue}
+                        />
+
+                    )
+                })
                 }
 
-                return (
-                    <InputForm
-                        key={name}
-                        error={isRed}
-                        name={name}
-                        title={title}
-                        type={type}
-                        required={required}
-                        storage={register}
-                        errorStorage={errors}
-                        style={style}
-                        defaultValue={defaultValue}
-                    />
 
-
-                    // <TextField
-                    //     key={name}
-                    //     style={style}
-                    //     // error={error}
-                    //     error={watchValues.length == 8 && (error[title] == undefined || error[title].type != 'pattern') ? false : true}
-                    //     id={name}
-                    //     variant="standard"
-                    //     required={required}
-                    //     value={validText}
-                    //     label={title}
-                    //     type={type}
-                    //     helperText={message}
-                    //     defaultValue={defaultField}
-                    //     // onChange={event(title)}
-                    //     InputLabelProps={{
-                    //         shrink: true,
-                    //     }}
-                    //     // InputProps={{
-                    //     //     readOnly: false,
-                    //     // }}
-                    //     {...register(title, {
-                    //         pattern: type === 'email' ? /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]{1,}$/ :
-                    //             (type === 'password' ? /^[A-Za-z\d@$!%*#?&]{8,}$/ :
-                    //                 (type === 'number' ? /[0-9]/ :
-                    //                     (type === 'text' ? /^(?!\s*$)[a-z ,.'-~ãõç]+$/i :
-                    //                         (type === 'latlon' ? /^(-+)[*0-9]{2},[*0-9]{1,8}$/ :
-                    //                             /[a-zA-Z0-9]/)))),
-                    //         // validate:
-                    //     })}
-                    // />
-                )
-            })
-            }
-
-
-            {/* <TextField
+                {/* <TextField
                 id="standard-select-currency-native"
                 select
                 label="Native select"
@@ -340,13 +330,20 @@ function DrugStoreSubscription() {
                 </TextField> */}
 
 
-            <button
-                onClick={handleSubmit(onSubmit)}
-                style={{ display: 'flex', flexDirection: 'flex-end' }}
-            >
-                Vai
-            </button>
-        </form>
+                <button
+                    onClick={handleSubmit(onSubmit)}
+                    style={{ display: 'flex', flexDirection: 'flex-end' }}
+                >
+                    Vai
+                </button>
+            </form>
+
+            {data?.length > 0 ? Object.keys(data).map((key, index) => {
+                return (
+                    <p key={index}>{key}: {data[key]}</p>
+                )
+            }) : <p>Sem dados Coletados</p>}
+        </>
     )
 }
 
