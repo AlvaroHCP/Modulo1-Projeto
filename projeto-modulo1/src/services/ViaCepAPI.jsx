@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 // const FindPostalCode = async (postalCode, storageData) => {
-const FindPostalCode = async (postalCode) => {
+const FindPostalCode = async (postalCode, storageData) => {
 
     try {
         if (postalCode) {
@@ -13,7 +13,7 @@ const FindPostalCode = async (postalCode) => {
                 console.log(data.data)
 
 
-                // storageData(data.data)
+                storageData(data.data)
             }
         }
 

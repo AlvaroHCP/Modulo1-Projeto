@@ -1,13 +1,17 @@
 import axios from 'axios';
 import { InputForm } from "../../components/inputField"
 import { useForm } from "react-hook-form"
-import { useEffect, useState } from "react";
+import { FindPostalCode } from '../../services/ViaCEPAPI';
+import { useEffect, useState, useRef } from "react";
+import { Header } from '../../components/header';
+
 
 
 function DrugStoreSubscription() {
     const { register, watch, handleSubmit, formState: { errors } } = useForm();
     const regex = /,/gi
     const [data, setData] = useState()
+    const dataViaCEP = useRef();
 
 
     let watchValues = watch(['CNPJ', 'Celular', 'CEP', 'Latitude', 'Longitude'])
@@ -36,7 +40,7 @@ function DrugStoreSubscription() {
 
         FindPostalCode()
 
-    }, [watchValues])
+    }, [])
 
 
 
@@ -237,6 +241,9 @@ function DrugStoreSubscription() {
 
     return (
         <>
+            <Header>
+            </Header>
+
             <form >
 
                 {fields.map(({ name, title, type, required, error }) => {
