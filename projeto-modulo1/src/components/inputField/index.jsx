@@ -1,7 +1,5 @@
 import './styled.js'
 import { TextField } from "@mui/material";
-import { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
 
 
 function InputForm({ error, name, title, type, required, readOnly, storage, errorStorage, style, defaultValue }) {
@@ -112,11 +110,11 @@ function InputForm({ error, name, title, type, required, readOnly, storage, erro
                         readOnly: readOnly,
                     }}
                     {...storage(title, {
-                        pattern: type === 'email' ? /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]{1,}$/ :
+                        pattern: type === 'email' ? /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9.]{1,}$/ :
                             (type === 'password' ? /^[A-Za-z\d@$!%*#?&]{8,}$/ :
                                 (type === 'number' ? /^[0-9]{1,}$/ :
-                                    (type === 'text' ? /^(?!\s*$)[a-z ,.'-~ãõç]+$/i :
-                                        (type === 'latlon' ? /^(-+)[*0-9]{2},[*0-9]{1,8}$/ :
+                                    (type === 'text' ? /^(?!\s*$)[a-z ,.'-~ãõçáéíóàè]+$/i :
+                                        (type === 'latlon' ? /^(-+)([*0-9]{2})+\.[*0-9]{2,8}$/ :
                                             /[a-zA-Z0-9]/)))),
                     })}
                 />
