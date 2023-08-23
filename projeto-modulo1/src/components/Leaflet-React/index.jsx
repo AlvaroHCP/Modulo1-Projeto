@@ -5,8 +5,8 @@ import { MapContainerStyled } from "./styled"
 import { TileLayer, Circle } from 'react-leaflet';
 
 
-function Map({ position, address, radius = 100, scale = (17 || (radius != undefined && radius != 0) / 20) }) {
-
+function Map({ position, addressList, radius = 100, scale = (17 || (radius != undefined && radius != 0) / 20) }) {
+    console.log(addressList);
     // console.log(radius.toString().length)
 
 
@@ -38,8 +38,6 @@ function Map({ position, address, radius = 100, scale = (17 || (radius != undefi
     // Para 4 fica em 1 / 1000
 
 
-    radius = 1000
-
     const scaleFromRadius = (radius) => {
         const radiusLength = radius.toString().length
 
@@ -54,17 +52,14 @@ function Map({ position, address, radius = 100, scale = (17 || (radius != undefi
         if (radiusLength == 3) {
             const constant = 1 / 300
             scale = 17 - constant * (radius - 100)
-            // console.log(scale);
         }
         if (radiusLength == 4) {
             const constant = 1 / 1000
             scale = 14 - constant * (radius - 1000)
-            // console.log(scale);
         }
-
-        console.log('\n\n');
-        console.log('Raio = ', radius)
-        console.log('Actual Scale = ', scale)
+        // console.log('\n\n');
+        // console.log('Raio = ', radius)
+        // console.log('Actual Scale = ', scale)
     }
 
 
@@ -78,23 +73,30 @@ function Map({ position, address, radius = 100, scale = (17 || (radius != undefi
                 fillColor="blue"
                 radius={radius} />
 
-            <Marker position={position}>
+            {addressList.map((address, index) => {
+                // console.log(address.latitude, address.longitude)
+                return (
+                    <Marker position={[address.latitude, address.longitude]} key={index}>
 
-                <TileLayer
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                />
-                <Popup>
-                    {Object.keys(address).map((key, index) => {
-                        return (
-                            <p key={index}>
-                                {key}: {address[key]}
-                            </p>
-                        )
-                    })}
-                </Popup>
+                        <TileLayer
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        />
+                        <Popup>
+                            {
+                                Object.keys(address).map((key, index) => {
+                                    return (
+                                        <p key={index}>
+                                            {key}: {address[key]}
+                                        </p>
+                                    )
+                                })
+                            }
+                        </Popup>
 
-            </Marker>
+                    </Marker>
+                )
+            })}
 
         </MapContainerStyled>
     );

@@ -8,7 +8,7 @@ import Slider from '@mui/material/Slider';
 
 function MapPage() {
 
-    let radius = 0
+    let radius = 100
 
     StoredDrugStores()
 
@@ -22,14 +22,27 @@ function MapPage() {
                 <Map
                     radius={radius}
                     position={[-27.5944418, -48.52081496678028]}
-                    address={{
+                    addressList={[{
+                        "latitude": "-27.5944418",
+                        "longitude": "-48.52081496678028",
                         "zip": "88036-003",
                         "street": "Rua Lauro Linhares",
                         "numberStreet": "700",
                         "district": "Trindade",
                         "city": "Florianópolis",
                         "uf": "SC"
-                    }}></Map>
+                    },
+                    {
+                        "latitude": "-27.597263",
+                        "longitude": "-48.522010",
+                        "zip": "88040-400",
+                        "street": "R. Des. Vítor Lima",
+                        "numberStreet": "200",
+                        "district": "Trindade",
+                        "city": "Florianópolis",
+                        "uf": "SC"
+                    }
+                    ]}></Map>
 
             </DivStyled>
         </>
