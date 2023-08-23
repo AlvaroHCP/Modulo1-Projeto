@@ -1,5 +1,6 @@
 import { Map } from "../../components/Leaflet-React"
 import { Header } from "../../components/Header"
+import { Footer } from '../../components/Footer'
 import { StoredDrugStores } from "../../Scripts/StoredDrogStores"
 import { DivStyled } from "./styled"
 import { useState } from "react"
@@ -164,6 +165,7 @@ function MapPage() {
                 ></Map>
 
             </DivStyled>
+            <Footer></Footer>
         </>
     )
 }

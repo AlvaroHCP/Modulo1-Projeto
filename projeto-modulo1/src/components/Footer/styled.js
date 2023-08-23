@@ -9,7 +9,8 @@ bottom: 0;
 left: 0;
 right: 0;
 /* position: fixed; */
-height: 50px;
+margin-Top: 50px;
+height: 100px;
 border-top: 1px solid grey;
 `
 
