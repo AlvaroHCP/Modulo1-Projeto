@@ -1,12 +1,12 @@
 import 'leaflet/dist/leaflet.css';
 // import { MapContainer } from 'react-leaflet'
-import { Marker, Popup } from 'react-leaflet';
+import { Marker, Popup, Tooltip } from 'react-leaflet';
 import { MapContainerStyled } from "./styled"
 import { TileLayer, Circle } from 'react-leaflet';
 
 
 function Map({ position, addressList, radius = 100, scale = (17 || (radius != undefined && radius != 0) / 20) }) {
-    console.log(addressList);
+    // console.log(addressList);
     // console.log(radius.toString().length)
 
 
@@ -67,7 +67,7 @@ function Map({ position, addressList, radius = 100, scale = (17 || (radius != un
 
 
     return (
-        <MapContainerStyled center={position} zoom={scale} style={{ width: "800px", height: "450px" }}>
+        <MapContainerStyled center={position} zoom={scale} scrollWheelZoom={true}>
 
             <Circle center={position}
                 fillColor="blue"
@@ -76,12 +76,15 @@ function Map({ position, addressList, radius = 100, scale = (17 || (radius != un
             {addressList.map((address, index) => {
                 // console.log(address.latitude, address.longitude)
                 return (
-                    <Marker position={[address.latitude, address.longitude]} key={index}>
+                    <Marker position={[address.latitude, address.longitude]} key={index}  >
+
+                        <Tooltip>{address.name ? address.name : `Farmácia ${index + 1}`}</Tooltip>
 
                         <TileLayer
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         />
+
                         <Popup>
                             {
                                 Object.keys(address).map((key, index) => {

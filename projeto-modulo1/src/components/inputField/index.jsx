@@ -4,7 +4,7 @@ import { TextField } from "@mui/material";
 
 function InputForm({ error, name, title, type, required, readOnly, storage, errorStorage, style, defaultValue }) {
 
-
+    console.log(error, name, title, type, required, readOnly, storage, errorStorage, style, defaultValue);
     required != true ? required = false : required = true
     readOnly != true ? readOnly = false : readOnly = true
     defaultValue == undefined ? defaultValue = '' : defaultValue
