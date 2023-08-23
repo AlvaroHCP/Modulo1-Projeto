@@ -100,13 +100,13 @@ Bem vindo!`)
                     >
                         <ButtonAreaStyled>
                             <Button
-                                onClick={() => navigate('/ListaMedicamentos')}
+                                onClick={() => navigate('/DrugsList')}
                                 autoFocus
                             >
                                 Página de Medicamentos
                             </Button>
                             <Button
-                                onClick={() => navigate('/MapaFarmacias')}
+                                onClick={() => navigate('/DrugStoresMap')}
                                 autoFocus
                             >
                                 Mapa de Farmácias
