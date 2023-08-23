@@ -1,8 +1,8 @@
-import { InputForm } from "../../components/inputField"
+import { InputForm } from "../../components/InputField"
 import { useForm } from "react-hook-form"
 import { FindPostalCode } from '../../services/ViaCEPAPI';
 import { useEffect, useRef } from "react";
-import { Header } from '../../components/header';
+import { Header } from '../../components/Header';
 import { StoredDrugStores } from "../../Scripts/StoredDrogStores";
 
 
