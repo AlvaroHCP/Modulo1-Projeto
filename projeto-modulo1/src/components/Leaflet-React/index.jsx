@@ -6,6 +6,7 @@ import { TileLayer, Circle } from 'react-leaflet';
 
 
 function Map({ position, addressList, radius = 100, scale = (17 || (radius != undefined && radius != 0) / 20) }) {
+    // console.log(position);
     // console.log(addressList);
     // console.log(radius.toString().length)
 
@@ -69,16 +70,25 @@ function Map({ position, addressList, radius = 100, scale = (17 || (radius != un
     return (
         <MapContainerStyled center={position} zoom={scale} scrollWheelZoom={true}>
 
-            <Circle center={position}
-                fillColor="blue"
-                radius={radius} />
+            <Circle
+                center={position}
+                fillColor="red"
+                color='blue'
+                radius={radius}
+            />
 
             {addressList.map((address, index) => {
-                // console.log(address.latitude, address.longitude)
+                // console.log(address.Latitude, address.Longitude)
                 return (
-                    <Marker position={[address.latitude, address.longitude]} key={index}  >
+                    <Marker position={[address.Latitude, address.Longitude]} key={index}  >
 
-                        <Tooltip>{address.name ? address.name : `Farmácia ${index + 1}`}</Tooltip>
+                        <Tooltip>
+                            {address?.name ? address.name :
+                                (address.Latitude == position[0] && address.Longitude == position[1] ?
+                                    'Você está Aqui' :
+                                    `Farmácia ${index + 1}`)
+                            }
+                        </Tooltip>
 
                         <TileLayer
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
