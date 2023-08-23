@@ -18,6 +18,8 @@ function MapPage() {
     let loadedData = []
     const clickAndLoad = () => {
         StoredDrugStores()
+        // Refreshing the page
+        window.location.reload(false)
     }
     const dataName = 'DrugStores'
     loadedData = JSON.parse(localStorage.getItem(dataName)) || []
