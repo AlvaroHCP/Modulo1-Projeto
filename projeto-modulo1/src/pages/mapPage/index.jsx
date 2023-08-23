@@ -12,14 +12,17 @@ import Slider from '@mui/material/Slider';
 import { TextField } from "@mui/material"
 
 
+import { RefreshPage } from "../../Scripts/RefreshPage"
+
 
 function MapPage() {
+
 
     let loadedData = []
     const clickAndLoad = () => {
         StoredDrugStores()
         // Refreshing the page
-        window.location.reload(false)
+        RefreshPage()
     }
     const dataName = 'DrugStores'
     loadedData = JSON.parse(localStorage.getItem(dataName)) || []
