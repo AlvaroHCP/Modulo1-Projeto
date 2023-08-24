@@ -37,7 +37,7 @@ function Header() {
                     display={'grid'}
                     gap={1}
                     gridTemplateColumns={{
-                        xs: 'repeat(3, 1fr)',
+                        xs: 'repeat(5, 1fr)',
                     }}
                 >
                     <ButtonImageRoutes
@@ -57,7 +57,7 @@ function Header() {
                     <ButtonImageRoutes
                         imageSource={"https://img.icons8.com/?size=512&id=9emOgiekluvM&format=png"}
                         altName={"Icone Projetos"}
-                        route={"/DrugsSub"}
+                        route={"/DrugsSubs"}
                         buttonName={"Cadastrar Medicamento"}
                     />
 

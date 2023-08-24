@@ -1,11 +1,28 @@
 import 'leaflet/dist/leaflet.css';
-// import { MapContainer } from 'react-leaflet'
 import { Marker, Popup, Tooltip } from 'react-leaflet';
 import { MapContainerStyled } from "./styled"
 import { TileLayer, Circle } from 'react-leaflet';
+import { useState, useEffect } from 'react';
+
+import { useMap } from "react-leaflet";
+// import { useMapEvent } from "react-leaflet";
 
 
-function Map({ position, addressList, radius = 100, scale = (17 || (radius != undefined && radius != 0) / 20) }) {
+function SetScale({ scale }) {
+    const map = useMap()
+    // const map = useMapEvent('change', () => {
+    //     map.setZoom(scale)
+    // })
+    map.setZoom(scale)
+    console.log(map.getZoom())
+    return null
+}
+
+export { SetScale }
+
+
+
+function Map({ position, addressList, radiusState, scaleState }) {
     // console.log(position);
     // console.log(addressList);
     // console.log(radius.toString().length)
@@ -39,24 +56,30 @@ function Map({ position, addressList, radius = 100, scale = (17 || (radius != un
     // Para 4 fica em 1 / 1000
 
 
+
+    const [scale, setScale] = useState(scaleState || 20)
+    const [radius, setRadius] = useState(radiusState || 200)
+
     const scaleFromRadius = (radius) => {
         const radiusLength = radius.toString().length
 
-        if (radius < 100) {
-            radius = 100
-            scale = 17
+        if (radius < 10) {
+            setRadius(10)
+            setScale(20)
+        } else if (10 < radius && radius < 100) {
+            setScale(18)
         }
         if (radius > 4000) {
-            radius = 4000
-            scale = 13
+            setRadius(4000)
+            setScale(13)
         }
         if (radiusLength == 3) {
             const constant = 1 / 300
-            scale = 17 - constant * (radius - 100)
+            setScale(17 - constant * (radius - 100))
         }
         if (radiusLength == 4) {
             const constant = 1 / 1000
-            scale = 14 - constant * (radius - 1000)
+            setScale(14 - constant * (radius - 1000))
         }
         // console.log('\n\n');
         // console.log('Raio = ', radius)
@@ -64,11 +87,18 @@ function Map({ position, addressList, radius = 100, scale = (17 || (radius != un
     }
 
 
-    scaleFromRadius(radius)
-
+    useEffect(() => {
+        setRadius(radiusState)
+        scaleFromRadius(radiusState)
+        // position = position.map(e => e + 0.0002)
+        // console.log(scale, radius);
+    }, [radiusState])
 
     return (
         <MapContainerStyled center={position} zoom={scale} scrollWheelZoom={true}>
+            {console.log("Radius = ", radius, " Scale = ", scale)}
+
+            <SetScale scale={scale} />
 
             <Circle
                 center={position}

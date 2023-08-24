@@ -1,7 +1,7 @@
 import { Map } from "../../components/Leaflet-React"
 import { Header } from "../../components/Header"
 import { Footer } from '../../components/Footer'
-import { StoredDrugStores } from "../../Scripts/StoredDrogStores"
+import { StoredDrugStores } from "../../Scripts/StoredDrugStores"
 import { DivStyled } from "./styled"
 import { useState } from "react"
 
@@ -64,9 +64,10 @@ function MapPage() {
     // }
     // console.log(position, address)
 
-    const [radius, setRadius] = useState(300)
     const minRadius = 10
-    const maxRadius = 1000
+    const maxRadius = 2000
+    const initialRadius = minRadius < 10 ? 100 : minRadius
+    const [radius, setRadius] = useState(initialRadius)
 
 
     // const handleChange = (event, newValue) => {
@@ -75,6 +76,7 @@ function MapPage() {
 
     const handleSliderChange = (event, newValue) => {
         setRadius(newValue);
+        console.log(newValue);
     };
 
     const handleInputChange = (event) => {
@@ -151,7 +153,7 @@ function MapPage() {
                                 type: 'number',
                                 'aria-labelledby': 'radius-slider',
                             }}
-                            style={{ width: '42px' }}
+                            style={{ width: '72px' }}
                             variant={"standard"}
                         />
                     </Stack>
@@ -159,7 +161,7 @@ function MapPage() {
 
 
                 <Map
-                    radius={radius}
+                    radiusState={radius}
                     position={position}
                     addressList={loadedData.length > 0 ? loadedData : address}
                 ></Map>
