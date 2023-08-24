@@ -16,13 +16,13 @@ function LoginPage() {
     const onSubmit = (dataFromForm) => {
 
 
-        alert(`Usuário logado com sucesso!
+        //         alert(`Usuário logado com sucesso!
 
-E-mail: ${dataFromForm.email}
+        // E-mail: ${dataFromForm.email}
 
-Senha: ${dataFromForm.password}
+        // Senha: ${dataFromForm.password}
 
-Bem vindo!`)
+        // Bem vindo!`)
 
         localStorage.setItem(user, JSON.stringify(dataFromForm))
 
