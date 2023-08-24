@@ -4,6 +4,7 @@ import { NotFound404 } from '../pages/404'
 import { DrugStoreSubscription } from "../pages/drugStoreSubscription"
 import { MapPage } from "../pages/mapPage"
 import { DrugsSubscription } from "../pages/drugsSubscription"
+import { DrugsListPage } from '../pages/drugsList'
 
 function RoutesApp() {
     return (
@@ -11,7 +12,7 @@ function RoutesApp() {
             <Route path="/" element={<LoginPage />} />
             <Route path="*" element={<NotFound404 />} />
             <Route path="/DrugsSubs" element={<DrugsSubscription />} />
-            <Route path="/DrugsList" element={<NotFound404 />} />
+            <Route path="/DrugsList" element={<DrugsListPage />} />
             <Route path="/DrugStoresSubs" element={<DrugStoreSubscription />} />
             <Route path="/DrugStoresMap" element={<MapPage />} />
         </Routes>
