@@ -22,16 +22,34 @@ function PopperCard({ name, medicinDose, laboratory, description, cost, drugType
                     <Popper {...bindPopper(popupState)}
                         transition
                         placement="right"
+                        // placement="bottom"
+                        sx={{ width: '300px' }}
                     >
                         {({ TransitionProps }) => (
                             <Fade {...TransitionProps} timeout={350}>
-                                <Paper>
-                                    <Typography sx={{ p: 2 }}>
-                                        O medicamento {name} - {medicinDose} do laboratório {laboratory} é um {drugType}
 
-                                        {'\n\n' + description}
+                                <Paper
+                                    sx={{ backgroundColor: 'lightgreen', boxShadow: '20' }}
+                                >
+                                    <Typography
+                                        sx={{ p: 2 }}
+                                        elevation={0}
+                                    >
+                                        O medicamento {name} - {medicinDose
+                                        } do laboratório {laboratory
+                                        } é um {drugType == 'Medicamento Controlado' ?
+                                            <u><b>{drugType}</b></u> :
+                                            <>{drugType}</>}
+
+                                    </Typography>
+                                    <Typography
+                                        sx={{ p: 2 }}
+
+                                    >
+                                        {description}
                                     </Typography>
                                 </Paper>
+
                             </Fade>
                         )}
                     </Popper>

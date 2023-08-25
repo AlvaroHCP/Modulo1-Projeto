@@ -12,43 +12,20 @@ function Header() {
     return (
         <>
             <HeaderStyled>
-                {/* <Grid container
-                    justifyContent={"space-between"}
-                >
-                    <Grid
-                        textAlign={"center"}
-                        xs={3}
-                    >
-                        <p>Início</p>
-                    </Grid>
-                    <Grid
-                        textAlign={"center"}
-                        xs={3}
-                    >
-                        <p>Sobre Mim</p>
-                    </Grid>
-                </Grid> */}
-
-
 
                 <Grid container
                     width={'85%'}
-                    justifyItems={"center"}
+                    justifyItems={"space-around"}
                     display={'grid'}
                     gap={1}
                     gridTemplateColumns={{
-                        xs: 'repeat(5, 1fr)',
+                        xs: 'repeat(2, 1fr)',
+                        lg: 'repeat(4, 1fr)',
                     }}
                 >
-                    <ButtonImageRoutes
-                        imageSource={"https://img.icons8.com/?size=512&id=14096&format=png"}
-                        altName={"Icone Home"}
-                        route={"/"}
-                        buttonName={"Início"}
-                    />
 
                     <ButtonImageRoutes
-                        imageSource={"https://img.icons8.com/?size=512&id=23400&format=png"}
+                        imageSource={"https://img.icons8.com/?size=512&id=14096&format=png"}
                         altName={"Icone Pessoa"}
                         route={"/DrugsList"}
                         buttonName={"Medicamentos"}
@@ -62,7 +39,7 @@ function Header() {
                     />
 
                     <ButtonImageRoutes
-                        imageSource={"https://img.icons8.com/?size=512&id=9emOgiekluvM&format=png"}
+                        imageSource={"https://img.icons8.com/?size=512&id=23400&format=png"}
                         altName={"Icone Projetos"}
                         route={"/DrugStoresMap"}
                         buttonName={"Mapa de Farmácias"}

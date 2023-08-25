@@ -49,26 +49,17 @@ function DrugsListPage() {
                             Carregar Informações de Medicamentos
                         </button>
 
-                        {/* <button
-                            onClick={clickAndChange}
-                            style={{ marginTop: '20px', backgroundColor: "lightblue", border: 'solid green' }}
-                            >
-                            Trocar o mapa para outra cidade
-                        </button> */}
                     </div>) :
                     <Grid container
                         width={'85%'}
-                        justifyItems={"space-around"}
+                        justifyItems={"center"}
                         display={'grid'}
                         gap={1}
                         gridTemplateColumns={{
-                            xs: 'repeat(4, 1fr)',
+                            xs: 'repeat(2, 1fr)',
+                            lg: 'repeat(4, 1fr)',
                         }}
                     >
-
-                        {/* <div style={{
-                        width: '90%', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around'
-                    }}> */}
 
                         {
                             loadedData.map(drug => {
@@ -88,6 +79,7 @@ function DrugsListPage() {
                                         <CardDrugs
                                             name={drug['Nome do Medicamento']}
                                             medicinDose={drug['Dosagem']}
+                                            drugType={drug['Tipo de Medicamento']}
                                             cost={drug['Preço Unitário']}
                                         >
                                         </CardDrugs>
@@ -95,7 +87,6 @@ function DrugsListPage() {
                                 )
                             })
                         }
-                        {/* </div> */}
 
                     </Grid>
                 }
