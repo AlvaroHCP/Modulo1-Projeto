@@ -2,19 +2,17 @@ import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { DivStyled } from "./styled"
 import { CardDrugs } from '../../components/CardDrugs'
-// import { CardStyled } from "./styled"
 
 
 import { StoredDrugsList } from '../../Scripts/StoredDrugsList'
 import { RefreshPage } from '../../Scripts/RefreshPage'
 
 
-// import CardContent from '@mui/material/CardContent';
-// import CardMedia from '@mui/material/CardMedia';
-// import Typography from '@mui/material/Typography';
-// import { CardActionArea, CardActions } from '@mui/material';
-// import IconButton from '@mui/material/IconButton';
-// import FavoriteIcon from '@mui/icons-material/Favorite';
+import Typography from '@mui/material/Typography';
+import Popper from '@mui/material/Popper';
+import PopupState, { bindToggle, bindPopper } from 'material-ui-popup-state';
+import Fade from '@mui/material/Fade';
+import Paper from '@mui/material/Paper';
 
 
 function DrugsListPage() {
@@ -59,6 +57,24 @@ function DrugsListPage() {
                     </div>) :
                     <></>
                 }
+
+                {/* <PopupState variant="popper" popupId="demo-popup-popper">
+                    {(popupState) => ( */}
+                <div>
+                    <CardDrugs {...bindToggle(popupState)}>
+                    </CardDrugs>
+                    <Popper {...bindPopper(popupState)} transition>
+                        {({ TransitionProps }) => (
+                            <Fade {...TransitionProps} timeout={350}>
+                                <Paper>
+                                    <Typography sx={{ p: 2 }}>The content of the Popper.</Typography>
+                                </Paper>
+                            </Fade>
+                        )}
+                    </Popper>
+                </div>
+                {/* )}
+                </PopupState> */}
 
                 <CardDrugs>
                 </CardDrugs>
