@@ -43,11 +43,33 @@ function CardDrugs({ name, medicinDose, drugType, cost }) {
         <CardStyled sx={{ width: '260px', height: '450px' }}>
 
             <CardActions sx={{ height: '30px', mb: '0px', placeContent: 'end' }}>
-                <IconButton aria-label="add to favorites" onClick={e => favouriteClick(e)}>
+                {/* <IconButton aria-label="add to favorites" onClick={e => favouriteClick(e)}>
                     <FavoriteIcon
                         sx={{ color: color.current }}
                     />
-                </IconButton>
+                </IconButton> */}
+
+                {/* input type Button */}
+                <div>
+                    <img
+                        src='https://img.icons8.com/?size=512&id=O8nhnATsSrC6&format=png'
+                        alt='Botão de Favorito'
+                        onClick={e => favouriteClick(e)}
+                        style={{ color: 'blue', width: '600px', height: '800px' }}
+                    />
+                </div>
+
+                <div
+                    style={{ marginTop: '10px' }}
+                >
+                    <img
+                        src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpBjyCtabv9ckpANVQxg0pVx4rUSWUuMrLNqisT8iZsexkjXBfb2kLoLOHBU4dImF7v7E&usqp=CAU'
+                        alt='Botão de Favorito'
+                        onClick={e => favouriteClick(e)}
+                        style={{ color: color.current, width: '30px' }}
+                    />
+                </div>
+
             </CardActions>
 
             <CardActionArea
