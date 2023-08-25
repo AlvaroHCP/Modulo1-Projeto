@@ -9,6 +9,9 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 
 
 function CardDrugs({ name, medicinDose, cost }) {
+
+    const previousCost = !!cost ? (1.1 * parseFloat(cost)).toFixed(2) : ""
+
     return (
         <CardStyled>
 
@@ -41,11 +44,11 @@ function CardDrugs({ name, medicinDose, cost }) {
                     </Typography>
 
                     <Typography variant="h6" color="text.secondary" style={{ marginTop: '16px', textDecoration: 'line-through', fontSize: '14px' }}>
-                        {!!cost ? 1.1 * cost : ''}
+                        De R${previousCost}
                     </Typography>
 
                     <Typography variant="h6" color="text.primary" style={{ marginTop: '0px' }}>
-                        {cost}
+                        R$  {cost}
                     </Typography>
 
                 </CardContent>

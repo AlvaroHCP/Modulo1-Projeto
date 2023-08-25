@@ -9,32 +9,22 @@ import { StoredDrugsList } from '../../Scripts/StoredDrugsList'
 import { RefreshPage } from '../../Scripts/RefreshPage'
 
 
+import { Grid } from '@mui/material'
+
+
 function DrugsListPage() {
 
     let loadedData = []
+
     const clickAndLoad = () => {
         StoredDrugsList()
         // Refreshing the page
         RefreshPage()
     }
+
+
     const dataName = 'DrugsList'
     loadedData = JSON.parse(localStorage.getItem(dataName)) || []
-
-
-    let keysArray = []
-    Object.keys(loadedData[0]).forEach(e => {
-        keysArray.push(e)
-    })
-    console.log(keysArray)
-
-
-    const name = keysArray[2]
-    const medicinDose = keysArray[4]
-    const laboratory = keysArray[3]
-    const description = keysArray[0]
-    const cost = keysArray[5]
-    const drugType = keysArray[1]
-    // console.log(name)
 
 
     return (
@@ -66,43 +56,54 @@ function DrugsListPage() {
                             Trocar o mapa para outra cidade
                         </button> */}
                     </div>) :
-                    <></>
-                }
+                    <Grid container
+                        width={'85%'}
+                        justifyItems={"space-around"}
+                        display={'grid'}
+                        gap={1}
+                        gridTemplateColumns={{
+                            xs: 'repeat(4, 1fr)',
+                        }}
+                    >
 
-                <div style={{
-                    width: '90%', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around'
-                }}>
-                    {
-                        loadedData.map(drug => {
-                            // console.log(Object.keys(drug))
-                            // console.log(drug['Nome do Medicamento']);
-                            return (
-                                <PopperCard
-                                    name={drug[keysArray[2]]}
-                                    medicinDose={drug[keysArray[4]]}
-                                    laboratory={drug[keysArray[3]]}
-                                    description={drug[keysArray[0]]}
-                                    cost={drug[keysArray[5]]}
-                                    drugType={drug[keysArray[1]]}
-                                    key={drug[keysArray[2]]}
-                                    style={{ width: '20%' }}
-                                >
-                                    <CardDrugs
-                                        name={drug[keysArray[2]]}
-                                        medicinDose={drug[keysArray[4]]}
-                                        cost={drug[keysArray[5]]}
+                        {/* <div style={{
+                        width: '90%', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around'
+                    }}> */}
+
+                        {
+                            loadedData.map(drug => {
+                                // console.log(Object.keys(drug))
+                                // console.log(drug['Nome do Medicamento']);
+                                return (
+                                    <PopperCard
+                                        name={drug['Nome do Medicamento']}
+                                        medicinDose={drug['Dosagem']}
+                                        laboratory={drug['Laboratório']}
+                                        description={drug['Descrição do Medicamento']}
+                                        cost={drug['Preço Unitário']}
+                                        drugType={drug['Tipo de Medicamento']}
+                                        key={drug['Preço Unitário']}
+                                        style={{ width: '20%' }}
                                     >
-                                    </CardDrugs>
-                                </PopperCard>
-                            )
-                        })
-                    }
-                </div>
+                                        <CardDrugs
+                                            name={drug['Nome do Medicamento']}
+                                            medicinDose={drug['Dosagem']}
+                                            cost={drug['Preço Unitário']}
+                                        >
+                                        </CardDrugs>
+                                    </PopperCard>
+                                )
+                            })
+                        }
+                        {/* </div> */}
 
+                    </Grid>
+                }
             </DivStyled >
 
             <Footer></Footer>
         </>
+
     )
 }
 
