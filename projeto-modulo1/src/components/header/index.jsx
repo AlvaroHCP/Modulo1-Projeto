@@ -1,6 +1,9 @@
 import { HeaderStyled } from './styled'
-import { Grid } from '@mui/material'
+import { Grid, Button } from '@mui/material'
 import { ButtonImageRoutes } from '../ButtonImageRoutes'
+
+import BedtimeIcon from '@mui/icons-material/Bedtime';
+import BedtimeOffIcon from '@mui/icons-material/BedtimeOff';
 
 function Header() {
 
@@ -54,11 +57,16 @@ function Header() {
 
                 </Grid>
 
-                {/* <button onClick={toggleMode}>
-                    <img
+                <Button onClick={toggleMode}
+                // sx={{ mr: 0 }}
+                >
+                    {/* <img
                         src="https://img.icons8.com/?size=512&id=AzYziyKyf28h&format=png"
-                        alt="Dark Mode" />
-                </button> */}
+                        alt="Dark Mode" /> */}
+                    <BedtimeIcon />
+                    <BedtimeOffIcon />
+
+                </Button>
 
             </HeaderStyled >
         </>
