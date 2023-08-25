@@ -2,14 +2,17 @@ import './App.css'
 import { BrowserRouter } from 'react-router-dom'
 import { RoutesApp } from './routes'
 
-function App() {
+import { LightDarkTheme } from './components/LightDarkTheme'
 
+function App() {
 
   return (
     <>
-      <BrowserRouter>
-        <RoutesApp />
-      </BrowserRouter>
+      <LightDarkTheme>
+        <BrowserRouter>
+          <RoutesApp />
+        </BrowserRouter>
+      </LightDarkTheme>
     </>
   )
 }
