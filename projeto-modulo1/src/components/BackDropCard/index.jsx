@@ -56,7 +56,7 @@ function BackDropCard({ name, medicinDose, laboratory, description, cost, drugTy
 
                         </Typography>
                         <Typography
-                            sx={{ p: 2 }}
+                            sx={{ mt: '-15px', p: 2 }}
 
                         >
                             {description}
