@@ -40,9 +40,9 @@ function CardDrugs({ name, medicinDose, drugType, cost }) {
 
 
     return (
-        <CardStyled sx={{ width: '260px', height: '450px', textAlign: 'center' }}>
+        <CardStyled sx={{ width: '260px', height: '450px' }}>
 
-            <CardActions style={{ height: '20px', placeContent: 'end' }}>
+            <CardActions sx={{ height: '30px', mb: '0px', placeContent: 'end' }}>
                 <IconButton aria-label="add to favorites" onClick={e => favouriteClick(e)}>
                     <FavoriteIcon
                         sx={{ color: color.current }}
@@ -50,7 +50,9 @@ function CardDrugs({ name, medicinDose, drugType, cost }) {
                 </IconButton>
             </CardActions>
 
-            <CardActionArea>
+            <CardActionArea
+                sx={{ height: '420px', m: '0px', p: '0px' }}
+            >
 
                 {/* <IconButton aria-label="add to favorites">
                             <FavoriteIcon />
@@ -61,26 +63,27 @@ function CardDrugs({ name, medicinDose, drugType, cost }) {
                     height="140"
                     image="https://img.freepik.com/fotos-gratis/frasco-de-remedio-derramando-pilulas-coloridas-retratando-riscos-de-dependencia-de-ia-generativa_188544-12529.jpg?w=2000"
                     alt="green iguana"
+                    sx={{ mt: '-10px' }}
                 />
 
                 <CardContent
                     // style={{ textAlign: 'center' }}
-                    style={{ height: '230px', display: 'flex', flexDirection: 'column', alignContent: 'center', justifyContent: 'space-between' }}
+                    style={{ height: '270px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignContent: 'center', justifyContent: 'space-between' }}
                 >
                     <Typography gutterBottom variant="h5" component="div"
-                        sx={{ mt: '10px' }}
+                        sx={{ mt: '16px', mb: '14px' }}
                     >
                         {name}
                     </Typography>
 
                     <Typography variant="body1" color="text.primary"
-                    // style={{ marginTop: '0px' }}
+                    // style={{ marginTop: '12px' }}
                     >
                         {medicinDose}
                     </Typography>
 
                     <Typography variant="h6" color="text.primary"
-                        style={{ marginTop: '14px', fontSize: '18px' }}
+                        style={{ marginTop: '18px', fontSize: '18px' }}
                     >
                         {drugType == 'Medicamento Controlado' ?
                             <u><b>{drugType}</b></u> :
@@ -88,7 +91,7 @@ function CardDrugs({ name, medicinDose, drugType, cost }) {
                     </Typography>
 
                     <Typography variant="h6" color="text.secondary"
-                        style={{ marginTop: '16px', textDecoration: 'line-through', fontSize: '14px' }}
+                        style={{ marginTop: '18px', textDecoration: 'line-through', fontSize: '14px' }}
                     >
                         De R${previousCost}
                     </Typography>

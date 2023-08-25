@@ -25,7 +25,12 @@ function BackDropCard({ name, medicinDose, laboratory, description, cost, drugTy
     return (
         <>
 
-            <Button onClick={handleOpen}>{children}</Button>
+            <Button onClick={handleOpen}
+                sx={{ mt: '40px', p: '0px' }}
+            >
+                {children}
+            </Button>
+
             <Backdrop
                 sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                 open={open}
