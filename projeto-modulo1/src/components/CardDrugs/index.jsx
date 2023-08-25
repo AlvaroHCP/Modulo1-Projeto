@@ -40,7 +40,7 @@ function CardDrugs({ name, medicinDose, drugType, cost }) {
 
 
     return (
-        <CardStyled sx={{ width: '260px', height: '450px' }}>
+        <CardStyled sx={{ width: '260px', height: '450px', textAlign: 'center' }}>
 
             <CardActions style={{ height: '20px', placeContent: 'end' }}>
                 <IconButton aria-label="add to favorites" onClick={e => favouriteClick(e)}>

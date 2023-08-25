@@ -3,6 +3,7 @@ import { Footer } from '../../components/Footer'
 import { DivStyled } from "./styled"
 import { PopperCard } from '../../components/PopperCard'
 import { CardDrugs } from '../../components/CardDrugs'
+import { BackDropCard } from '../../components/BackDropCard'
 
 
 import { StoredDrugsList } from '../../Scripts/StoredDrugsList'
@@ -66,7 +67,7 @@ function DrugsListPage() {
                                 // console.log(Object.keys(drug))
                                 // console.log(drug['Nome do Medicamento']);
                                 return (
-                                    <PopperCard
+                                    <BackDropCard
                                         name={drug['Nome do Medicamento']}
                                         medicinDose={drug['Dosagem']}
                                         laboratory={drug['Laboratório']}
@@ -83,7 +84,7 @@ function DrugsListPage() {
                                             cost={drug['Preço Unitário']}
                                         >
                                         </CardDrugs>
-                                    </PopperCard>
+                                    </BackDropCard>
                                 )
                             })
                         }

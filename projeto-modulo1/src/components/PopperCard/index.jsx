@@ -19,6 +19,7 @@ function PopperCard({ name, medicinDose, laboratory, description, cost, drugType
                         {children}
                     </Button>
 
+
                     <Popper {...bindPopper(popupState)}
                         transition
                         placement="right"
