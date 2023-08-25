@@ -8,7 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 
-function CardDrugs() {
+function CardDrugs({ name, medicinDose, cost }) {
     return (
         <CardStyled>
 
@@ -33,19 +33,19 @@ function CardDrugs() {
 
                 <CardContent style={{ textAlign: 'center' }}>
                     <Typography gutterBottom variant="h5" component="div">
-                        Lizard
+                        {name}
                     </Typography>
 
                     <Typography variant="body1" color="text.primary" style={{ marginTop: '16px' }}>
-                        500mg
+                        {medicinDose}
                     </Typography>
 
                     <Typography variant="h6" color="text.secondary" style={{ marginTop: '16px', textDecoration: 'line-through', fontSize: '14px' }}>
-                        Preço Antigo
+                        {!!cost ? 1.1 * cost : ''}
                     </Typography>
 
                     <Typography variant="h6" color="text.primary" style={{ marginTop: '0px' }}>
-                        Preço Atual
+                        {cost}
                     </Typography>
 
                 </CardContent>

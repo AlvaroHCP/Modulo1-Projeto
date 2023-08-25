@@ -1,18 +1,12 @@
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { DivStyled } from "./styled"
+import { PopperCard } from '../../components/PopperCard'
 import { CardDrugs } from '../../components/CardDrugs'
 
 
 import { StoredDrugsList } from '../../Scripts/StoredDrugsList'
 import { RefreshPage } from '../../Scripts/RefreshPage'
-
-
-import Typography from '@mui/material/Typography';
-import Popper from '@mui/material/Popper';
-import PopupState, { bindToggle, bindPopper } from 'material-ui-popup-state';
-import Fade from '@mui/material/Fade';
-import Paper from '@mui/material/Paper';
 
 
 function DrugsListPage() {
@@ -25,6 +19,23 @@ function DrugsListPage() {
     }
     const dataName = 'DrugsList'
     loadedData = JSON.parse(localStorage.getItem(dataName)) || []
+
+
+    let keysArray = []
+    Object.keys(loadedData[0]).forEach(e => {
+        keysArray.push(e)
+    })
+    console.log(keysArray)
+
+
+    const name = keysArray[2]
+    const medicinDose = keysArray[4]
+    const laboratory = keysArray[3]
+    const description = keysArray[0]
+    const cost = keysArray[5]
+    const drugType = keysArray[1]
+    // console.log(name)
+
 
     return (
         <>
@@ -58,28 +69,37 @@ function DrugsListPage() {
                     <></>
                 }
 
-                {/* <PopupState variant="popper" popupId="demo-popup-popper">
-                    {(popupState) => ( */}
-                <div>
-                    <CardDrugs {...bindToggle(popupState)}>
-                    </CardDrugs>
-                    <Popper {...bindPopper(popupState)} transition>
-                        {({ TransitionProps }) => (
-                            <Fade {...TransitionProps} timeout={350}>
-                                <Paper>
-                                    <Typography sx={{ p: 2 }}>The content of the Popper.</Typography>
-                                </Paper>
-                            </Fade>
-                        )}
-                    </Popper>
+                <div style={{
+                    width: '90%', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around'
+                }}>
+                    {
+                        loadedData.map(drug => {
+                            // console.log(Object.keys(drug))
+                            // console.log(drug['Nome do Medicamento']);
+                            return (
+                                <PopperCard
+                                    name={drug[keysArray[2]]}
+                                    medicinDose={drug[keysArray[4]]}
+                                    laboratory={drug[keysArray[3]]}
+                                    description={drug[keysArray[0]]}
+                                    cost={drug[keysArray[5]]}
+                                    drugType={drug[keysArray[1]]}
+                                    key={drug[keysArray[2]]}
+                                    style={{ width: '20%' }}
+                                >
+                                    <CardDrugs
+                                        name={drug[keysArray[2]]}
+                                        medicinDose={drug[keysArray[4]]}
+                                        cost={drug[keysArray[5]]}
+                                    >
+                                    </CardDrugs>
+                                </PopperCard>
+                            )
+                        })
+                    }
                 </div>
-                {/* )}
-                </PopupState> */}
 
-                <CardDrugs>
-                </CardDrugs>
-
-            </DivStyled>
+            </DivStyled >
 
             <Footer></Footer>
         </>
