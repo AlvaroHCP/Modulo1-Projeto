@@ -8,8 +8,11 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, CardActions } from '@mui/material';
-import IconButton from '@mui/material/IconButton';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import { CardActionAreaStyled } from './styled'
+
+
+
+import { BsFillHeartFill } from 'react-icons/bs'
 
 
 function CardDrugs({ name, medicinDose, drugType, cost }) {
@@ -51,28 +54,24 @@ function CardDrugs({ name, medicinDose, drugType, cost }) {
 
                 {/* input type Button */}
                 <div>
-                    <img
-                        src='https://img.icons8.com/?size=512&id=O8nhnATsSrC6&format=png'
-                        alt='Botão de Favorito'
+                    <BsFillHeartFill
                         onClick={e => favouriteClick(e)}
-                        style={{ color: 'blue', width: '600px', height: '800px' }}
+                        style={{ marginTop: '70px', color: "lightseagreen", fontSize: '900px' }}
                     />
                 </div>
 
                 <div
                     style={{ marginTop: '10px' }}
                 >
-                    <img
-                        src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpBjyCtabv9ckpANVQxg0pVx4rUSWUuMrLNqisT8iZsexkjXBfb2kLoLOHBU4dImF7v7E&usqp=CAU'
-                        alt='Botão de Favorito'
+                    <BsFillHeartFill
                         onClick={e => favouriteClick(e)}
-                        style={{ color: color.current, width: '30px' }}
+                        style={{ color: color.current, fontSize: '22px' }}
                     />
                 </div>
 
             </CardActions>
 
-            <CardActionArea
+            <CardActionAreaStyled
                 sx={{ height: '420px', m: '0px', p: '0px' }}
             >
 
@@ -85,12 +84,16 @@ function CardDrugs({ name, medicinDose, drugType, cost }) {
                     height="140"
                     image="https://img.freepik.com/fotos-gratis/frasco-de-remedio-derramando-pilulas-coloridas-retratando-riscos-de-dependencia-de-ia-generativa_188544-12529.jpg?w=2000"
                     alt="green iguana"
-                    sx={{ mt: '-10px' }}
+                    sx={{ mt: '0px', height: '160px' }}
                 />
 
                 <CardContent
                     // style={{ textAlign: 'center' }}
-                    style={{ height: '270px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignContent: 'center', justifyContent: 'space-between' }}
+                    style={{
+                        height: '260px', textAlign: 'center',
+                        display: 'flex', flexDirection: 'column', alignContent: 'center',
+                        justifyContent: 'space-between'
+                    }}
                 >
                     <Typography gutterBottom variant="h5" component="div"
                         sx={{ mt: '16px', mb: '14px' }}
@@ -126,7 +129,7 @@ function CardDrugs({ name, medicinDose, drugType, cost }) {
 
                 </CardContent>
 
-            </CardActionArea>
+            </CardActionAreaStyled>
         </CardStyled>
     )
 }

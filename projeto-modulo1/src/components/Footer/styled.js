@@ -13,7 +13,8 @@ right: 0;
 /* position: fixed; */
 margin-Top: 50px;
 border-top: 1px solid grey;
-background-color: lightgreen;
+/* background-color: lightgreen; */
+background-color: darkcyan;
 `
 
 export default FooterStyled
