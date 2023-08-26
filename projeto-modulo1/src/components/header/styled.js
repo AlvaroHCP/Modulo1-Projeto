@@ -7,7 +7,8 @@ justify-content: space-evenly;
 border-bottom: 1px solid black;
 /* position: fixed; */
 min-height: 50px;
-background-color: lightgreen;
+/* background-color: darkcyan; */
+background-color: #72b1b0;
 
 section {
     display: flex;

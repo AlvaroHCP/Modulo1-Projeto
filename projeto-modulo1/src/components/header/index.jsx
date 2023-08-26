@@ -44,7 +44,8 @@ function Header() {
             return (
                 <div
                     style={{
-                        color: 'lightblue',
+                        // color: 'lightblue',
+                        color: '#ffffff',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'flex-end'
