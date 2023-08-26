@@ -5,7 +5,7 @@ import { RoutesApp } from './routes'
 import { LightDarkTheme } from './components/LightDarkTheme'
 
 
-import { AppProvider } from './context'
+import { AppProvider } from './context/DarkMode'
 
 function App() {
 

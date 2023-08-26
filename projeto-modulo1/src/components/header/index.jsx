@@ -5,12 +5,59 @@ import { ButtonImageRoutes } from '../ButtonImageRoutes'
 import BedtimeIcon from '@mui/icons-material/Bedtime';
 import BedtimeOffIcon from '@mui/icons-material/BedtimeOff';
 
+
+import { useLightDarkTheme } from '../../hooks/useLightDarkTheme'
+
+
 function Header() {
 
+    const { darkMode, setDarkMode } = useLightDarkTheme()
+
+    // let mode = false
+
     const toggleMode = () => {
-        alert("Changing Mode!")
+        console.log(darkMode)
+        console.log("Changing Mode!\n\n\n")
+        // alert("Changing Mode!")
+        setDarkMode(darkMode == false ? true : false)
         // setMode(mode === 'dark' ? 'light' : 'dark');
     };
+
+    const lightDarkModeIcon = (darkMode) => {
+        if (darkMode == false) {
+            return (
+                <div
+                    style={{
+                        color: 'darkblue',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'flex-end'
+                    }}
+                >
+                    <BedtimeIcon />
+                    <p
+                        style={{ fontSize: '10px' }}
+                    >Dark Mode</p>
+                </div>
+            )
+        } else {
+            return (
+                <div
+                    style={{
+                        color: 'lightblue',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'flex-end'
+                    }}
+                >
+                    <BedtimeOffIcon />
+                    <p
+                        style={{ fontSize: '10px' }}
+                    >light Mode</p>
+                </div>
+            )
+        }
+    }
 
     return (
         <>
@@ -57,14 +104,16 @@ function Header() {
 
                 </Grid>
 
-                <Button onClick={toggleMode}
+                <Button onClick={() => toggleMode()}
                 // sx={{ mr: 0 }}
                 >
-                    {/* <img
-                        src="https://img.icons8.com/?size=512&id=AzYziyKyf28h&format=png"
-                        alt="Dark Mode" /> */}
-                    <BedtimeIcon />
-                    <BedtimeOffIcon />
+                    {/* {darkMode == false ?
+                        <BedtimeIcon /> :
+                        <BedtimeOffIcon
+                            style={{ color: 'white' }}
+                        />
+                    } */}
+                    {lightDarkModeIcon(darkMode)}
 
                 </Button>
 
