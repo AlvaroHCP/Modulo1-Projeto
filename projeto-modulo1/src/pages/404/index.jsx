@@ -13,10 +13,10 @@ function NotFound404() {
 
     useEffect(() => {
         setTimeout(() => {
-            goTo('/')
+            goTo('/DrugsList')
 
         }, timer)
-    })
+    }, [])
 
     const goBack = (event) => {
         event.preventDefault

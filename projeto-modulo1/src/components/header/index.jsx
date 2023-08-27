@@ -13,14 +13,11 @@ function Header() {
 
     const { darkMode, setDarkMode } = useLightDarkTheme()
 
-    // let mode = false
-
     const toggleMode = () => {
-        console.log(darkMode)
-        console.log("Changing Mode!\n\n\n")
+        // console.log(darkMode)
+        // console.log("Changing Mode!\n\n\n")
         // alert("Changing Mode!")
         setDarkMode(darkMode == false ? true : false)
-        // setMode(mode === 'dark' ? 'light' : 'dark');
     };
 
     const lightDarkModeIcon = (darkMode) => {
@@ -108,14 +105,7 @@ function Header() {
                 <Button onClick={() => toggleMode()}
                 // sx={{ mr: 0 }}
                 >
-                    {/* {darkMode == false ?
-                        <BedtimeIcon /> :
-                        <BedtimeOffIcon
-                            style={{ color: 'white' }}
-                        />
-                    } */}
                     {lightDarkModeIcon(darkMode)}
-
                 </Button>
 
             </HeaderStyled >

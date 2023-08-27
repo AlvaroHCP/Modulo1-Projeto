@@ -14,7 +14,7 @@ function SetScale({ scale }) {
     //     map.setZoom(scale)
     // })
     map.setZoom(scale)
-    console.log(map.getZoom())
+    // console.log(map.getZoom())
     return null
 }
 
@@ -96,7 +96,7 @@ function Map({ position, addressList, radiusState, scaleState }) {
 
     return (
         <MapContainerStyled center={position} zoom={scale} scrollWheelZoom={true}>
-            {console.log("Radius = ", radius, " Scale = ", scale)}
+            {/* {console.log("Radius = ", radius, " Scale = ", scale)} */}
 
             <SetScale scale={scale} />
 

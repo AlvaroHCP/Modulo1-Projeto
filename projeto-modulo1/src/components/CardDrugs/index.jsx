@@ -11,8 +11,10 @@ import { CardActionArea, CardActions } from '@mui/material';
 import { CardActionAreaStyled } from './styled'
 
 
-
 import { BsFillHeartFill } from 'react-icons/bs'
+
+
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 
 function CardDrugs({ name, medicinDose, drugType, cost }) {
@@ -24,11 +26,18 @@ function CardDrugs({ name, medicinDose, drugType, cost }) {
     const favouriteClicked = 'red'
     const [favouriteColor, setFavouriteColor] = useState(favouriteUnclicked)
 
-    const color = useRef(favouriteUnclicked)
+    const color = useRef(favouriteColor)
 
-    useEffect(() => {
-        // alert(color.current)
-    }, [favouriteColor])
+    // const favouriteName = 'Favourites'
+    // const { favouriteRegister, setFavouriteRegister } = useLocalStorage(favouriteName, [])
+
+    if (!localStorage.getItem('Drug ' + name)) {
+        localStorage.setItem('Drug ' + name, JSON.stringify(favouriteUnclicked))
+    }
+
+    const { value, setValue } = useLocalStorage(`Drug ${name}`, '')
+    // console.log(value)
+
 
     const toggleFavouriteColor = () => {
         color.current == favouriteUnclicked ?
@@ -39,6 +48,9 @@ function CardDrugs({ name, medicinDose, drugType, cost }) {
         e.stopPropagation()
         toggleFavouriteColor()
         setFavouriteColor(color.current)
+        setValue(color.current)
+        // setFavouriteRegister(name, color.current)
+        // localStorage.setItem('Drug ' + name, JSON.stringify(color.current))
     }
 
 
@@ -61,11 +73,12 @@ function CardDrugs({ name, medicinDose, drugType, cost }) {
                 </div>
 
                 <div
+                    onClick={e => favouriteClick(e)}
                     style={{ marginTop: '10px' }}
                 >
                     <BsFillHeartFill
-                        onClick={e => favouriteClick(e)}
-                        style={{ color: color.current, fontSize: '22px' }}
+                        // onClick={e => favouriteClick(e)}
+                        style={{ color: value, fontSize: '22px' }}
                     />
                 </div>
 

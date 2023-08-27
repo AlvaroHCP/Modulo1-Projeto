@@ -78,7 +78,7 @@ function MapPage() {
 
     const handleSliderChange = (event, newValue) => {
         setRadius(newValue);
-        console.log(newValue);
+        // console.log(newValue);
     };
 
     const handleInputChange = (event) => {

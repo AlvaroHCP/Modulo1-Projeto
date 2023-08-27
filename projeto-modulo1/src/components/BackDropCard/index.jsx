@@ -8,6 +8,8 @@ import Backdrop from '@mui/material/Backdrop';
 
 import { useState } from 'react';
 
+import { RefreshPage } from '../../Scripts/RefreshPage';
+
 
 function BackDropCard({ name, medicinDose, laboratory, description, cost, drugType, children }) {
 
@@ -17,6 +19,7 @@ function BackDropCard({ name, medicinDose, laboratory, description, cost, drugTy
     };
     const handleOpen = () => {
         setOpen(true);
+        // RefreshPage()
     };
 
     return (
