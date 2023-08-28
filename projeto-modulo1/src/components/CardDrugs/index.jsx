@@ -17,10 +17,11 @@ import { BsFillHeartFill } from 'react-icons/bs'
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 
-function CardDrugs({ name, medicinDose, drugType, cost }) {
+function CardDrugs({ name, medicinDose, drugType, cost, cardShow }) {
 
     const previousCost = !!cost ? (1.1 * parseFloat(cost)).toFixed(2) : ""
 
+    !!cardShow ? cardShow = true : cardShow = false
 
     const favouriteUnclicked = 'lightblue'
     const favouriteClicked = 'red'
@@ -79,13 +80,6 @@ function CardDrugs({ name, medicinDose, drugType, cost }) {
         <CardStyled sx={{ width: '260px', height: '450px' }}>
 
             <CardActions sx={{ height: '30px', mb: '0px', placeContent: 'end' }}>
-                {/* <IconButton aria-label="add to favorites" onClick={e => favouriteClick(e)}>
-                    <FavoriteIcon
-                        sx={{ color: color.current }}
-                    />
-                </IconButton> */}
-
-                {/* input type Button */}
                 <div>
                     <BsFillHeartFill
                         onClick={e => favouriteClick(e)}
@@ -93,7 +87,7 @@ function CardDrugs({ name, medicinDose, drugType, cost }) {
                     />
                 </div>
 
-                <div
+                {cardShow == false ? <div
                     onClick={e => favouriteClick(e)}
                     style={{ marginTop: '10px' }}
                 >
@@ -101,7 +95,8 @@ function CardDrugs({ name, medicinDose, drugType, cost }) {
                         // onClick={e => favouriteClick(e)}
                         style={{ color: color.current, fontSize: '22px' }}
                     />
-                </div>
+                </div> :
+                    <></>}
 
             </CardActions>
 

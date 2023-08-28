@@ -75,14 +75,25 @@ function DrugsListPage() {
                                         drugType={drug['Tipo de Medicamento']}
                                         key={drug['Preço Unitário']}
                                         style={{ width: '20%' }}
-                                    >
-                                        <CardDrugs
+
+                                        children1={<CardDrugs
                                             name={drug['Nome do Medicamento']}
                                             medicinDose={drug['Dosagem']}
                                             drugType={drug['Tipo de Medicamento']}
                                             cost={drug['Preço Unitário']}
                                         >
-                                        </CardDrugs>
+                                        </CardDrugs>}
+
+                                        children2={<CardDrugs
+                                            name={drug['Nome do Medicamento']}
+                                            medicinDose={drug['Dosagem']}
+                                            drugType={drug['Tipo de Medicamento']}
+                                            cost={drug['Preço Unitário']}
+                                            cardShow={true}
+                                        >
+                                        </CardDrugs>}
+
+                                    >
                                     </BackDropCard>
                                 )
                             })

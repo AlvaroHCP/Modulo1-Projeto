@@ -11,7 +11,7 @@ import { useState } from 'react';
 import { RefreshPage } from '../../Scripts/RefreshPage';
 
 
-function BackDropCard({ name, medicinDose, laboratory, description, cost, drugType, children }) {
+function BackDropCard({ name, medicinDose, laboratory, description, cost, drugType, children1, children2 }) {
 
     const [open, setOpen] = useState(false);
     const handleClose = () => {
@@ -28,7 +28,7 @@ function BackDropCard({ name, medicinDose, laboratory, description, cost, drugTy
             <Button onClick={handleOpen}
                 sx={{ mt: '40px', p: '0px' }}
             >
-                {children}
+                {children1}
             </Button>
 
             <Backdrop
@@ -39,7 +39,7 @@ function BackDropCard({ name, medicinDose, laboratory, description, cost, drugTy
                 <div
                     style={{ width: '700px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
                 >
-                    {children}
+                    {children2}
 
                     <Paper
                         sx={{ backgroundColor: 'lightgreen', boxShadow: '20' }}
