@@ -14,6 +14,7 @@ import { Grid } from '@mui/material'
 
 
 function DrugsListPage() {
+    StoredDrugsList()
 
     let loadedData = []
 
