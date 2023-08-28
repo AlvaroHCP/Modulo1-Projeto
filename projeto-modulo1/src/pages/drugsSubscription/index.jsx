@@ -44,8 +44,8 @@ function DrugsSubscription() {
         }
 
         newStores = localStorage.getItem(drugStores) ?
-            [...JSON.parse(localStorage.getItem(drugStores)), dataFromForm] :
-            [dataFromForm]
+            [...JSON.parse(localStorage.getItem(drugStores)), { ...dataFromForm, 'Favourite': 'false' }] :
+            [{ ...dataFromForm, 'Favourite': 'false' }]
 
         // console.log(loadedStores)
 

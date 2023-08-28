@@ -24,33 +24,54 @@ function CardDrugs({ name, medicinDose, drugType, cost }) {
 
     const favouriteUnclicked = 'lightblue'
     const favouriteClicked = 'red'
-    const [favouriteColor, setFavouriteColor] = useState(favouriteUnclicked)
-
-    const color = useRef(favouriteColor)
+    // const [favouriteColor, setFavouriteColor] = useState(favouriteUnclicked)
 
     // const favouriteName = 'Favourites'
     // const { favouriteRegister, setFavouriteRegister } = useLocalStorage(favouriteName, [])
 
-    if (!localStorage.getItem('Drug ' + name)) {
-        localStorage.setItem('Drug ' + name, JSON.stringify(favouriteUnclicked))
-    }
+    // if (!localStorage.getItem('Drug ' + name)) {
+    //     localStorage.setItem('Drug ' + name, JSON.stringify(favouriteUnclicked))
+    // }
 
-    const { value, setValue } = useLocalStorage(`Drug ${name}`, '')
+    const { value, setValue } = useLocalStorage("DrugsList", [])
     // console.log(value)
 
+    let thisFavourite = value.filter(element => {
+        if (element["Nome do Medicamento"] == name) {
+            return element['Favourite']
+        }
+    })[0]['Favourite']
+    console.log(thisFavourite)
+
+    const color = useRef(thisFavourite == 'true' ? favouriteClicked : favouriteUnclicked)
+
+    // const [heart, setHeart] = useState(thisFavourite == 'true' ? true : false)
 
     const toggleFavouriteColor = () => {
-        color.current == favouriteUnclicked ?
-            color.current = favouriteClicked :
-            color.current = favouriteUnclicked
+        // color.current == favouriteUnclicked ?
+        //     color.current = favouriteClicked :
+        //     color.current = favouriteUnclicked
+        thisFavourite == 'true' ?
+            color.current = favouriteUnclicked :
+            color.current = favouriteClicked
     }
     function favouriteClick(e) {
         e.stopPropagation()
         toggleFavouriteColor()
-        setFavouriteColor(color.current)
-        setValue(color.current)
-        // setFavouriteRegister(name, color.current)
-        // localStorage.setItem('Drug ' + name, JSON.stringify(color.current))
+
+        let newValue = value.map(element => {
+            if (element["Nome do Medicamento"] == name) {
+                if (element['Favourite'] == 'false') {
+                    element['Favourite'] = 'true'
+                } else {
+                    element['Favourite'] = 'false'
+                }
+                console.log("element['Favourite'] ", element['Favourite'])
+            }
+            return element
+        })
+
+        setValue(newValue)
     }
 
 
@@ -78,7 +99,7 @@ function CardDrugs({ name, medicinDose, drugType, cost }) {
                 >
                     <BsFillHeartFill
                         // onClick={e => favouriteClick(e)}
-                        style={{ color: value, fontSize: '22px' }}
+                        style={{ color: color.current, fontSize: '22px' }}
                     />
                 </div>
 

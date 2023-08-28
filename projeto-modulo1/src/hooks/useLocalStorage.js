@@ -6,23 +6,23 @@ const useLocalStorage = (key, initialValue) => {
 
     // const []
     const [value, setValue] = useState(initial)
-    const [favouriteRegister, setFavouriteRegister] = useState(initial)
+    const [storage, setStorage] = useState(initial)
 
     const updateValue = (newValue) => {
         localStorage.setItem(key, JSON.stringify(newValue))
         setValue(newValue)
     }
 
-    const favouriteUpdate = (name, color) => {
-
+    const favouriteUpdate = (newValue) => {
+        // setStorage()
         return
     }
 
     return {
         value,
         setValue: updateValue,
-        favouriteRegister,
-        setFavouriteRegister: favouriteUpdate
+        storage,
+        setStorage: favouriteUpdate
 
     }
 
