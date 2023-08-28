@@ -1,6 +1,6 @@
 import { InputForm } from "../../components/InputField"
 import { useForm } from "react-hook-form"
-import { FindPostalCode } from '../../services/ViaCEPAPI';
+import { FindPostalCode } from '../../services/ViaCepAPI.jsx';
 import { useEffect, useRef } from "react";
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer'
