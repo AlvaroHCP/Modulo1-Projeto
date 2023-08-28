@@ -17,7 +17,7 @@ import { RefreshPage } from "../../Scripts/RefreshPage"
 
 
 function MapPage() {
-    StoredDrugStores()
+    StoredDrugStores(true)
 
     let loadedData = []
     const clickAndLoad = () => {
