@@ -17,7 +17,7 @@ import { Grid } from '@mui/material'
 function DrugsListPage() {
     useEffect(() => {
         StoredDrugsList(true)
-    })
+    }, [])
 
     let loadedData = []
 
