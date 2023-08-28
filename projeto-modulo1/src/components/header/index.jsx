@@ -42,7 +42,8 @@ function Header() {
                 <div
                     style={{
                         // color: 'lightblue',
-                        color: '#ffffff',
+                        color: 'white',
+                        // color: '#ffffff',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'flex-end'

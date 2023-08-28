@@ -8,7 +8,7 @@ border-bottom: 1px solid black;
 /* position: fixed; */
 min-height: 50px;
 /* background-color: darkcyan; */
-background-color: #72b1b0;
+/* background-color: #72b1b0; */
 
 section {
     display: flex;
