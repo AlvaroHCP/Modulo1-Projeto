@@ -10,27 +10,22 @@ import { StoredDrugsList } from '../../Scripts/StoredDrugsList'
 import { RefreshPage } from '../../Scripts/RefreshPage'
 
 
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
+import { useState } from 'react'
 import { Grid } from '@mui/material'
 
 
 function DrugsListPage() {
-    useEffect(() => {
-        StoredDrugsList(true)
-    }, [])
-
-    let loadedData = []
-
-    const clickAndLoad = () => {
-        StoredDrugsList()
-        // Refreshing the page
-        RefreshPage()
-    }
-
 
     const dataName = 'DrugsList'
-    loadedData = JSON.parse(localStorage.getItem(dataName)) || []
+    const [loadedData, setLoadedData] = useState(JSON.parse(localStorage.getItem(dataName)) || [])
 
+    const clickAndLoad = () => {
+        StoredDrugsList(true)
+        setLoadedData(JSON.parse(localStorage.getItem(dataName)))
+        // Refreshing the page
+        // RefreshPage()
+    }
 
     return (
         <>

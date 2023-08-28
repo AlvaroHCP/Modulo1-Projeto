@@ -17,18 +17,16 @@ import { RefreshPage } from "../../Scripts/RefreshPage"
 
 
 function MapPage() {
-    StoredDrugStores(true)
 
-    let loadedData = []
-    const clickAndLoad = () => {
-        StoredDrugStores()
-        // Refreshing the page
-        RefreshPage()
-    }
     const dataName = 'DrugStores'
-    loadedData = JSON.parse(localStorage.getItem(dataName)) || []
-    // console.log(loadedData)
+    const [loadedData, setLoadedData] = useState(JSON.parse(localStorage.getItem(dataName)) || [])
 
+    const clickAndLoad = () => {
+        StoredDrugStores(true)
+        setLoadedData(JSON.parse(localStorage.getItem(dataName)))
+        // Refreshing the page
+        // RefreshPage()
+    }
 
     const positionRJ = [-22.896844, -43.275549]
     const addressRJ = [{ 'Bairro': 'Méier', 'Cidade': 'Rio de Janeiro', 'UF': 'RJ', 'Latitude': positionRJ[0], 'Longitude': positionRJ[1] }]
