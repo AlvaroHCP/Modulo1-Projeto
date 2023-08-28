@@ -10,11 +10,14 @@ import { StoredDrugsList } from '../../Scripts/StoredDrugsList'
 import { RefreshPage } from '../../Scripts/RefreshPage'
 
 
+import { useEffect } from 'react'
 import { Grid } from '@mui/material'
 
 
 function DrugsListPage() {
-    StoredDrugsList(true)
+    useEffect(() => {
+        StoredDrugsList(true)
+    })
 
     let loadedData = []
 
