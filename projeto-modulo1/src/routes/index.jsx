@@ -10,7 +10,7 @@ function RoutesApp() {
     return (
         <Routes>
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/*" element={<NotFound404 />} />
+            <Route path="*" element={<NotFound404 />} />
             <Route path="/DrugsSubs" element={<DrugsSubscription />} />
             <Route path="/DrugsList" element={<DrugsListPage />} />
             <Route path="/DrugStoresSubs" element={<DrugStoreSubscription />} />
