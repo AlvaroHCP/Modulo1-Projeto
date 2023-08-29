@@ -15,6 +15,7 @@ import { BsFillHeartFill } from 'react-icons/bs'
 
 
 import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { RefreshPage } from '../../Scripts/RefreshPage'
 
 
 function CardDrugs({ name, medicinDose, drugType, cost, cardShow }) {
@@ -73,6 +74,7 @@ function CardDrugs({ name, medicinDose, drugType, cost, cardShow }) {
         })
 
         setValue(newValue)
+        RefreshPage()
     }
 
 
