@@ -76,28 +76,28 @@ function Header() {
                     <ButtonImageRoutes
                         imageSource={"https://img.icons8.com/?size=512&id=14096&format=png"}
                         altName={"Icone Pessoa"}
-                        route={"/DrugsList"}
+                        route={"/drugslist"}
                         buttonName={"Medicamentos"}
                     />
 
                     <ButtonImageRoutes
                         imageSource={"https://img.icons8.com/?size=512&id=9emOgiekluvM&format=png"}
                         altName={"Icone Projetos"}
-                        route={"/DrugsSubs"}
+                        route={"/drugssubs"}
                         buttonName={"Cadastrar Medicamento"}
                     />
 
                     <ButtonImageRoutes
                         imageSource={"https://img.icons8.com/?size=512&id=23400&format=png"}
                         altName={"Icone Projetos"}
-                        route={"/DrugStoresMap"}
+                        route={"/drugstoresmap"}
                         buttonName={"Mapa de Farmácias"}
                     />
 
                     <ButtonImageRoutes
                         imageSource={"https://img.icons8.com/?size=512&id=9emOgiekluvM&format=png"}
                         altName={"Icone Projetos"}
-                        route={"/DrugStoresSubs"}
+                        route={"/drugstoressubs"}
                         buttonName={"Cadastrar Farmácia"}
                     />
 
