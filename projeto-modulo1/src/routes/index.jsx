@@ -11,10 +11,10 @@ function RoutesApp() {
         <Routes>
             <Route path="/" element={<LoginPage />} />
             <Route path="*" element={<NotFound404 />} />
-            <Route path="/drugssubs/" element={<DrugsSubscription />} />
-            <Route path="/drugslist/" element={<DrugsListPage />} />
-            <Route path="/drugstoressubs/" element={<DrugStoreSubscription />} />
-            <Route path="/drugstoresmap/" element={<MapPage />} />
+            <Route path="/DrugsSubs/" element={<DrugsSubscription />} />
+            <Route path="/DrugsList/" element={<DrugsListPage />} />
+            <Route path="/DrugStoresSubs/" element={<DrugStoreSubscription />} />
+            <Route path="/DrugStoresMap/" element={<MapPage />} />
         </Routes>
     )
 }

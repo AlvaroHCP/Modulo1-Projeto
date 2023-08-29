@@ -100,13 +100,13 @@ function LoginPage() {
                     >
                         <ButtonAreaStyled>
                             <Button
-                                onClick={() => navigate('/drugslist')}
+                                onClick={() => navigate('/DrugsList')}
                                 autoFocus
                             >
                                 Página de Medicamentos
                             </Button>
                             <Button
-                                onClick={() => navigate('/drugstoresmap')}
+                                onClick={() => navigate('/DrugStoresMap')}
                                 autoFocus
                             >
                                 Mapa de Farmácias
