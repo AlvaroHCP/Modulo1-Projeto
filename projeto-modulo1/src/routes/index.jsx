@@ -9,7 +9,7 @@ import { DrugsListPage } from '../pages/drugsList'
 function RoutesApp() {
     return (
         <Routes>
-            <Route path="/login" element={<LoginPage />} />
+            <Route path="/" element={<LoginPage />} />
             <Route path="*" element={<NotFound404 />} />
             <Route path="/DrugsSubs" element={<DrugsSubscription />} />
             <Route path="/DrugsList" element={<DrugsListPage />} />
