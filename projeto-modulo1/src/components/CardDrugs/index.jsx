@@ -50,9 +50,6 @@ function CardDrugs({ name, medicinDose, drugType, cost, cardShow }) {
     // const [heart, setHeart] = useState(thisFavourite == 'true' ? true : false)
 
     const toggleFavouriteColor = () => {
-        // color.current == favouriteUnclicked ?
-        //     color.current = favouriteClicked :
-        //     color.current = favouriteUnclicked
         thisFavourite == 'true' ?
             color.current = favouriteUnclicked :
             color.current = favouriteClicked
@@ -72,9 +69,7 @@ function CardDrugs({ name, medicinDose, drugType, cost, cardShow }) {
             }
             return element
         })
-
         setValue(newValue)
-        RefreshPage()
     }
 
 
