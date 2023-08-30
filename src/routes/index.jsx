@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom"
-import { LoginPage } from "../pages/login"
+import { LoginPage } from "../pages/Login"
 import { NotFound404 } from '../pages/404'
-import { DrugStoreSubscription } from "../pages/drugStoreSubscription"
-import { MapPage } from "../pages/mapPage"
-import { DrugsSubscription } from "../pages/drugsSubscription"
-import { DrugsListPage } from '../pages/drugsList'
+import { DrugStoreSubscription } from "../pages/DrugStoreSubscription"
+import { MapPage } from "../pages/MapPage"
+import { DrugsSubscription } from "../pages/DrugsSubscription"
+import { DrugsListPage } from '../pages/DrugsList'
 
 function RoutesApp() {
     return (
