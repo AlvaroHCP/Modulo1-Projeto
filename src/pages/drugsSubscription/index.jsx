@@ -125,23 +125,23 @@ function DrugsSubscription() {
 
     const style = (width, rest) => {
         if (rest) {
-            return ({ width: width, margin: '40px', })
+            return ({ width: width, marginLeft: '40px', marginRight: '40px', marginTop: '50px' })
         } else {
-            return ({ width: width, margin: '40px', })
+            return ({ width: width, marginLeft: '40px', marginRight: '40px', marginTop: '50px' })
         }
     }
 
 
 
     return (
-        <>
+        <div>
             <Header></Header>
 
-            <main style={{ display: 'flex', direction: 'column', alignContent: 'center' }} >
-                {/* <main style={{ width: '500px', alignContent: 'center' }}> */}
-                <h1 style={{ textAlign: 'center', marginTop: '60px' }}>Cadastre aqui os Medicamentos:</h1>
-                {/* <form style={{ marginTop: '20px', width: '600px' }}> */}
-                <form style={{ marginTop: '20px', width: '600px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+            <main style={{ display: 'flex', direction: 'column', alignContent: 'center', justifyContent: 'center', flexWrap: 'wrap' }} >
+
+                <form style={{ border: '2px solid lightseagreen', borderRadius: '10px', marginTop: '20px', width: '570px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
+
+                    <h1 style={{ marginTop: '30px', marginBottom: '0px' }}>Cadastre aqui os Medicamentos:</h1>
 
                     {fields.map(({ name, title, type, required, error, field, options, width }, index) => {
 
@@ -259,7 +259,7 @@ function DrugsSubscription() {
 
                     <button
                         onClick={handleSubmit(onSubmit)}
-                        style={{ marginTop: '20px', display: 'flex', placeItems: 'flex-end' }}
+                        style={{ marginTop: '50px', marginBottom: '20px' }}
                     >
                         Cadastrar Medicamento
                     </button>
@@ -267,7 +267,7 @@ function DrugsSubscription() {
             </main >
 
             <Footer></Footer>
-        </>
+        </div>
     )
 }
 

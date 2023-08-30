@@ -11,7 +11,8 @@ width: 100%;
 export const CardActionAreaStyled = styled(CardActionArea)`
 
 :hover {
-    background-color : #e2ffff;
+    /* background-color : #e2ffff; */
+    background-color : lightcyan;
     opacity: 90%;
 }
 `
