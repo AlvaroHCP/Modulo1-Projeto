@@ -73,7 +73,7 @@ function CardDrugs({ name, medicinDose, drugType, cost, cardShow }) {
             return element
         })
         setValue(newValue)
-        navigate('/DrugsList')
+        // navigate('/DrugsList')
     }
 
 
