@@ -68,6 +68,7 @@ function DrugsSubscription() {
                 required: true,
                 error: false,
                 field: 'input',
+                width: '500px',
             },
             {
                 name: 'Laboratory',
@@ -76,6 +77,7 @@ function DrugsSubscription() {
                 required: true,
                 error: false,
                 field: 'input',
+                width: '200px',
             },
             {
                 name: 'Medicin Dose',
@@ -84,22 +86,7 @@ function DrugsSubscription() {
                 required: true,
                 error: false,
                 field: 'input',
-            },
-            {
-                name: 'Description',
-                title: 'Descrição do Medicamento',
-                type: 'text',
-                required: false,
-                error: false,
-                field: 'textarea',
-            },
-            {
-                name: 'Cost',
-                title: 'Preço Unitário',
-                type: 'price',
-                required: true,
-                error: false,
-                field: 'input',
+                width: '200px',
             },
             {
                 name: 'DrugType',
@@ -111,25 +98,52 @@ function DrugsSubscription() {
                 options: [
                     { name: 'Medicamento Comum' },
                     { name: 'Medicamento Controlado' },
-                ]
+                ],
+                width: '200px',
 
+            },
+            {
+                name: 'Cost',
+                title: 'Preço Unitário',
+                type: 'price',
+                required: true,
+                error: false,
+                field: 'input',
+                width: '200px',
+            },
+            {
+                name: 'Description',
+                title: 'Descrição do Medicamento',
+                type: 'text',
+                required: false,
+                error: false,
+                field: 'textarea',
+                width: '500px',
             }
         ]
 
 
-    const style = { width: '200px', margin: '30px' }
+    const style = (width, rest) => {
+        if (rest) {
+            return ({ width: width, marginLeft: '40px', marginRight: '40px', marginTop: '50px' })
+        } else {
+            return ({ width: width, marginLeft: '40px', marginRight: '40px', marginTop: '50px' })
+        }
+    }
 
 
 
     return (
-        <>
+        <div>
             <Header></Header>
 
-            <main>
-                <h1 style={{ textAlign: 'center' }}>Página de Cadastro de Medicamentos</h1>
-                <form >
+            <main style={{ display: 'flex', direction: 'column', alignContent: 'center', justifyContent: 'center', flexWrap: 'wrap' }} >
 
-                    {fields.map(({ name, title, type, required, error, field, options }) => {
+                <form style={{ border: '2px solid lightseagreen', borderRadius: '10px', marginTop: '20px', width: '570px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
+
+                    <h1 style={{ marginTop: '30px', marginBottom: '0px' }}>Cadastre aqui os Medicamentos:</h1>
+
+                    {fields.map(({ name, title, type, required, error, field, options, width }, index) => {
 
                         let isRed
 
@@ -179,6 +193,13 @@ function DrugsSubscription() {
                         //         break
                         // }
 
+                        let rest
+                        if (index != 0 || index != 5) {
+                            rest = true
+                        } else {
+                            rest = false
+                        }
+
                         return (
                             field == 'input' ?
                                 <InputForm
@@ -190,7 +211,7 @@ function DrugsSubscription() {
                                     required={required}
                                     storage={register}
                                     errorStorage={errors}
-                                    style={style}
+                                    style={style(width, rest)}
                                     defaultValue={defaultValue}
                                 // helperText={helperText}
                                 /> :
@@ -206,7 +227,7 @@ function DrugsSubscription() {
                                         multiline
                                         maxRows={4}
                                         // variant="standard"
-                                        style={style}
+                                        style={style(width)}
                                         {...register(title)}
                                     /> :
                                     field == 'select' ?
@@ -221,7 +242,7 @@ function DrugsSubscription() {
                                             }}
                                             // helperText="Please select your currency"
                                             variant="standard"
-                                            style={style}
+                                            style={style(width)}
                                             {...register(title)}
                                         >
                                             {options.map((option) => (
@@ -238,15 +259,15 @@ function DrugsSubscription() {
 
                     <button
                         onClick={handleSubmit(onSubmit)}
-                        style={{ display: 'flex', flexDirection: 'flex-end' }}
+                        style={{ marginTop: '50px', marginBottom: '20px' }}
                     >
                         Cadastrar Medicamento
                     </button>
                 </form>
-            </main>
+            </main >
 
             <Footer></Footer>
-        </>
+        </div>
     )
 }
 

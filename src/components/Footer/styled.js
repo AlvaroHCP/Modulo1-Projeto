@@ -11,10 +11,13 @@ bottom: 0;
 left: 0;
 right: 0;
 /* position: fixed; */
-margin-Top: 50px;
+margin-Top: 30px;
 border-top: 1px solid grey;
 /* background-color: lightgreen; */
 background-color: darkcyan;
+/* border-radius: 10px; */
+border-top-left-radius: 8px;
+border-top-right-radius: 8px;
 `
 
 export default FooterStyled
