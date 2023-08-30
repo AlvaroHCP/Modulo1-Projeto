@@ -3,7 +3,8 @@ import { Grid, Button } from '@mui/material'
 import { ButtonImageRoutes } from '../ButtonImageRoutes'
 
 import BedtimeIcon from '@mui/icons-material/Bedtime';
-import BedtimeOffIcon from '@mui/icons-material/BedtimeOff';
+// import BedtimeOffIcon from '@mui/icons-material/BedtimeOff';
+import { BsSunFill } from "react-icons/bs";
 
 
 import { useLightDarkTheme } from '../../hooks/useLightDarkTheme'
@@ -49,7 +50,10 @@ function Header() {
                         justifyContent: 'flex-end'
                     }}
                 >
-                    <BedtimeOffIcon />
+                    {/* <BedtimeOffIcon /> */}
+                    <BsSunFill
+                        style={{ fontSize: '31px', padding: '3px' }}
+                    />
                     <p
                         style={{ fontSize: '10px' }}
                     >light Mode</p>
