@@ -2,6 +2,7 @@ import { CardStyled } from "./styled"
 
 
 import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 import CardContent from '@mui/material/CardContent';
@@ -19,6 +20,8 @@ import { RefreshPage } from '../../Scripts/RefreshPage'
 
 
 function CardDrugs({ name, medicinDose, drugType, cost, cardShow }) {
+
+    const navigate = useNavigate()
 
     const previousCost = !!cost ? (1.1 * parseFloat(cost)).toFixed(2) : ""
 
@@ -70,6 +73,7 @@ function CardDrugs({ name, medicinDose, drugType, cost, cardShow }) {
             return element
         })
         setValue(newValue)
+        navigate('/DrugsList')
     }
 
 
