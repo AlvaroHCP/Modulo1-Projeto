@@ -49,7 +49,7 @@ function LoginPage() {
                         placeholder="Formato: email@dominio.algo"
                         {...register('email', {
                             required: true,
-                            pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]{1,}$/,
+                            pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.*]{1,}$/,
                             setValueAs: v => v.trim().replace(" ", "")
                         })}
                     />
