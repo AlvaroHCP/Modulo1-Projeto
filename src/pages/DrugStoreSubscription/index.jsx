@@ -6,6 +6,8 @@ import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer'
 // import { StoredDrugStores } from "../../Scripts/StoredDrogStores";
 import { DivStyled } from './styled'
+import { ButtonArea } from './styled'
+import Button from '@mui/material/Button';
 
 
 
@@ -290,12 +292,21 @@ function DrugStoreSubscription() {
                     }
 
 
-                    <button
+                    {/* <button
                         onClick={handleSubmit(onSubmit)}
                         style={{ display: 'flex', flexDirection: 'flex-end' }}
                     >
                         Vai
-                    </button>
+                    </button> */}
+
+                    <ButtonArea>
+                        <Button
+                            onClick={handleSubmit(onSubmit)}
+                            autoFocus
+                        >
+                            Cadastrar Farmácia
+                        </Button>
+                    </ButtonArea>
                 </form>
             </DivStyled>
             <Footer>
