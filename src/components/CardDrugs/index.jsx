@@ -29,14 +29,6 @@ function CardDrugs({ name, medicinDose, drugType, cost, cardShow }) {
 
     const favouriteUnclicked = 'lightblue'
     const favouriteClicked = 'red'
-    // const [favouriteColor, setFavouriteColor] = useState(favouriteUnclicked)
-
-    // const favouriteName = 'Favourites'
-    // const { favouriteRegister, setFavouriteRegister } = useLocalStorage(favouriteName, [])
-
-    // if (!localStorage.getItem('Drug ' + name)) {
-    //     localStorage.setItem('Drug ' + name, JSON.stringify(favouriteUnclicked))
-    // }
 
     const { value, setValue } = useLocalStorage("DrugsList", [])
     // console.log(value)
@@ -73,7 +65,7 @@ function CardDrugs({ name, medicinDose, drugType, cost, cardShow }) {
             return element
         })
         setValue(newValue)
-        // navigate('/DrugsList')
+        RefreshPage()
     }
 
 
