@@ -3,6 +3,9 @@ import { Grid, Button } from '@mui/material'
 import { ButtonImageRoutes } from '../ButtonImageRoutes'
 
 import { TextField } from '@mui/material'
+import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
+import SearchIcon from '@mui/icons-material/Search';
 
 import BedtimeIcon from '@mui/icons-material/Bedtime';
 // import BedtimeOffIcon from '@mui/icons-material/BedtimeOff';
@@ -73,58 +76,69 @@ function Header() {
     return (
         <>
             <HeaderStyled>
-                {/* <TextField
-                style={{}}
-                ></TextField> */}
 
-                <Grid container
-                    width={'85%'}
-                    justifyItems={"space-around"}
-                    display={'grid'}
-                    gap={1}
-                    gridTemplateColumns={{
-                        xs: 'repeat(2, 1fr)',
-                        lg: 'repeat(4, 1fr)',
-                    }}
+                <div
+                    style={{ paddingTop: '18px', display: 'flex', justifyContent: 'center' }}
                 >
-
-                    <ButtonImageRoutes
-                        imageSource={"https://img.icons8.com/?size=512&id=14096&format=png"}
-                        altName={"Icone Pessoa"}
-                        route={"/DrugsList"}
-                        buttonName={"Medicamentos"}
+                    <TextField
+                        style={{ width: '600px', backgroundColor: 'white', borderRadius: '12px' }}
+                        // variant="standard"
+                        label={'Pesquise aqui o que precisa.'}
+                        type={'text'}
+                        size="small"
                     />
+                </div>
 
-                    {/* <FaPills></FaPills> */}
+                <div id='grid'>
+                    <Grid container
+                        width={'85%'}
+                        justifyItems={"space-around"}
+                        display={'grid'}
+                        gap={1}
+                        gridTemplateColumns={{
+                            xs: 'repeat(2, 1fr)',
+                            lg: 'repeat(4, 1fr)',
+                        }}
+                    >
 
-                    <ButtonImageRoutes
-                        imageSource={"https://img.icons8.com/?size=512&id=9emOgiekluvM&format=png"}
-                        altName={"Icone Projetos"}
-                        route={"/DrugsSubs"}
-                        buttonName={"Cadastrar Medicamento"}
-                    />
+                        <ButtonImageRoutes
+                            imageSource={"https://img.icons8.com/?size=512&id=14096&format=png"}
+                            altName={"Icone Pessoa"}
+                            route={"/DrugsList"}
+                            buttonName={"Medicamentos"}
+                        />
 
-                    <ButtonImageRoutes
-                        imageSource={"https://img.icons8.com/?size=512&id=23400&format=png"}
-                        altName={"Icone Projetos"}
-                        route={"/DrugStoresMap"}
-                        buttonName={"Mapa de Farmácias"}
-                    />
+                        {/* <FaPills></FaPills> */}
 
-                    <ButtonImageRoutes
-                        imageSource={"https://img.icons8.com/?size=512&id=9emOgiekluvM&format=png"}
-                        altName={"Icone Projetos"}
-                        route={"/DrugStoresSubs"}
-                        buttonName={"Cadastrar Farmácia"}
-                    />
+                        <ButtonImageRoutes
+                            imageSource={"https://img.icons8.com/?size=512&id=9emOgiekluvM&format=png"}
+                            altName={"Icone Projetos"}
+                            route={"/DrugsSubs"}
+                            buttonName={"Cadastrar Medicamento"}
+                        />
 
-                </Grid>
+                        <ButtonImageRoutes
+                            imageSource={"https://img.icons8.com/?size=512&id=23400&format=png"}
+                            altName={"Icone Projetos"}
+                            route={"/DrugStoresMap"}
+                            buttonName={"Mapa de Farmácias"}
+                        />
 
-                <Button onClick={() => toggleMode()}
-                // sx={{ mr: 0 }}
-                >
-                    {lightDarkModeIcon(darkMode)}
-                </Button>
+                        <ButtonImageRoutes
+                            imageSource={"https://img.icons8.com/?size=512&id=9emOgiekluvM&format=png"}
+                            altName={"Icone Projetos"}
+                            route={"/DrugStoresSubs"}
+                            buttonName={"Cadastrar Farmácia"}
+                        />
+
+                    </Grid>
+
+                    <Button onClick={() => toggleMode()}
+                    // sx={{ mr: 0 }}
+                    >
+                        {lightDarkModeIcon(darkMode)}
+                    </Button>
+                </div>
 
             </HeaderStyled >
         </>
