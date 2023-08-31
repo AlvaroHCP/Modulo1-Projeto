@@ -139,7 +139,7 @@ function DrugStoreSubscription() {
                 type: 'number',
                 required: false,
                 error: false,
-                width: '120px',
+                width: '140px',
             },
             {
                 name: 'CellPhone',
@@ -147,7 +147,7 @@ function DrugStoreSubscription() {
                 type: 'number',
                 required: true,
                 error: false,
-                width: '120px',
+                width: '140px',
             },
             {
                 name: 'PostalCode',
@@ -155,7 +155,7 @@ function DrugStoreSubscription() {
                 type: 'number',
                 required: true,
                 error: false,
-                width: '100px',
+                width: '120px',
             },
             {
                 name: 'Adress',
@@ -226,18 +226,19 @@ function DrugStoreSubscription() {
 
 
     const style = (width, index) => {
+        const margin = '20px'
         const marginAddress = '120px'
-        const marginGeoLocation = '200px'
+        const marginGeoLocation = '220px'
         if (index < 7) {
-            return ({ width: width, margin: '30px' })
+            return ({ width: width, margin: margin })
         } else if (index == 7 || index == 9 || index == 11) {
-            return ({ width: width, margin: '30px', marginLeft: marginAddress })
+            return ({ width: width, margin: margin, marginLeft: marginAddress })
         } else if (index == 8 || index == 10 || index == 12) {
-            return ({ width: width, margin: '30px', marginRight: marginAddress })
+            return ({ width: width, margin: margin, marginRight: marginAddress })
         } else if (index == 13) {
-            return ({ width: width, margin: '30px', marginLeft: marginGeoLocation })
+            return ({ width: width, margin: margin, marginLeft: marginGeoLocation })
         } else {
-            return ({ width: width, margin: '30px', marginRight: marginGeoLocation })
+            return ({ width: width, margin: margin, marginRight: marginGeoLocation })
         }
     }
 
@@ -249,11 +250,11 @@ function DrugStoreSubscription() {
 
             <DivStyled>
                 <form
-                    style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}
+                    style={{ marginTop: '40px', padding: '20px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', border: '2px solid lightseagreen', borderRadius: '10px' }}
                 >
-                    <h3
-                        style={{ width: '100%', textAlign: 'start' }}
-                    >Dados da Empresa:</h3>
+                    <h1
+                        style={{ marginTop: '0px', marginBottom: '20px', width: '100%', textAlign: 'start' }}
+                    >Cadastro de Farmácias</h1>
                     {fields.map(({ name, title, type, required, error, width }, index) => {
 
                         let isRed
@@ -304,7 +305,9 @@ function DrugStoreSubscription() {
                         }
 
                         let printH3
-                        if (index == 7) {
+                        if (index == 0) {
+                            printH3 = 'Dados da Empresa:'
+                        } else if (index == 7) {
                             printH3 = 'Endereço:'
                         } else if (index == 13) {
                             printH3 = 'Geo-localização:'
