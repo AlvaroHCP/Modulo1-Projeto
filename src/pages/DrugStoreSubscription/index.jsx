@@ -316,6 +316,7 @@ function DrugStoreSubscription() {
                         const divisors = (printH3) => {
                             return (
                                 <h3
+                                    // style={{ padding: '5px', width: '100%', textAlign: 'start', border: '1px double lightskyblue', borderRadius: '10px' }}
                                     style={{ width: '100%', textAlign: 'start' }}
                                 >
                                     {printH3}
