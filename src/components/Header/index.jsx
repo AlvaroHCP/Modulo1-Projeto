@@ -2,9 +2,14 @@ import { HeaderStyled } from './styled'
 import { Grid, Button } from '@mui/material'
 import { ButtonImageRoutes } from '../ButtonImageRoutes'
 
+import { TextField } from '@mui/material'
+
 import BedtimeIcon from '@mui/icons-material/Bedtime';
 // import BedtimeOffIcon from '@mui/icons-material/BedtimeOff';
+import LightModeIcon from '@mui/icons-material/LightMode';
 import { BsSunFill } from "react-icons/bs";
+
+import { FaPills } from "react-icons/fa";
 
 
 import { useLightDarkTheme } from '../../hooks/useLightDarkTheme'
@@ -51,9 +56,12 @@ function Header() {
                     }}
                 >
                     {/* <BedtimeOffIcon /> */}
-                    <BsSunFill
-                        style={{ fontSize: '31px', padding: '3px' }}
+                    <LightModeIcon
+                        style={{ marginLeft: '3px', fontSize: '32px', padding: '2px' }}
                     />
+                    {/* <BsSunFill
+                        style={{ fontSize: '31px', padding: '3px' }}
+                    /> */}
                     <p
                         style={{ fontSize: '10px' }}
                     >light Mode</p>
@@ -65,6 +73,9 @@ function Header() {
     return (
         <>
             <HeaderStyled>
+                {/* <TextField
+                style={{}}
+                ></TextField> */}
 
                 <Grid container
                     width={'85%'}
@@ -83,6 +94,8 @@ function Header() {
                         route={"/DrugsList"}
                         buttonName={"Medicamentos"}
                     />
+
+                    {/* <FaPills></FaPills> */}
 
                     <ButtonImageRoutes
                         imageSource={"https://img.icons8.com/?size=512&id=9emOgiekluvM&format=png"}

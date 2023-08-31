@@ -127,7 +127,7 @@ function DrugsSubscription() {
         if (rest) {
             return ({ width: width, marginLeft: '40px', marginRight: '40px', marginTop: '50px' })
         } else {
-            return ({ width: width, marginLeft: '40px', marginRight: '40px', marginTop: '50px' })
+            return ({ width: width, marginLeft: '40px', marginRight: '40px', marginTop: '40px' })
         }
     }
 
@@ -141,7 +141,7 @@ function DrugsSubscription() {
 
                 <form style={{ border: '2px solid lightseagreen', borderRadius: '10px', marginTop: '20px', width: '570px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
 
-                    <h1 style={{ marginTop: '30px', marginBottom: '0px' }}>Cadastre aqui os Medicamentos:</h1>
+                    <h1 style={{ marginTop: '10px', marginBottom: '-10px' }}>Cadastre aqui os Medicamentos:</h1>
 
                     {fields.map(({ name, title, type, required, error, field, options, width }, index) => {
 
@@ -194,7 +194,7 @@ function DrugsSubscription() {
                         // }
 
                         let rest
-                        if (index != 0 || index != 5) {
+                        if (index == 5) {
                             rest = true
                         } else {
                             rest = false
@@ -227,7 +227,7 @@ function DrugsSubscription() {
                                         multiline
                                         maxRows={4}
                                         // variant="standard"
-                                        style={style(width)}
+                                        style={style(width, rest)}
                                         {...register(title)}
                                     /> :
                                     field == 'select' ?
@@ -259,7 +259,7 @@ function DrugsSubscription() {
 
                     <button
                         onClick={handleSubmit(onSubmit)}
-                        style={{ marginTop: '50px', marginBottom: '20px' }}
+                        style={{ marginTop: '40px', marginBottom: '20px' }}
                     >
                         Cadastrar Medicamento
                     </button>
