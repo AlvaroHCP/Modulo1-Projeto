@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer'
 // import { StoredDrugStores } from "../../Scripts/StoredDrogStores";
+import { DivStyled } from './styled'
 
 
 
@@ -217,84 +218,86 @@ function DrugStoreSubscription() {
             <Header>
             </Header>
 
-            <form >
+            <DivStyled>
+                <form >
 
-                {fields.map(({ name, title, type, required, error }) => {
+                    {fields.map(({ name, title, type, required, error }) => {
 
-                    let isRed
+                        let isRed
 
-                    let defaultValue = (
-                        type == 'text' ? title :
-                            (type == 'email' ? 'nome@email.com' :
-                                (type == 'number' ? '0' :
-                                    (type == 'cep' ? '0' :
-                                        (type == 'latlon' ? '-00,00' : '--------'))))
-                    )
+                        let defaultValue = (
+                            type == 'text' ? title :
+                                (type == 'email' ? 'nome@email.com' :
+                                    (type == 'number' ? '0' :
+                                        (type == 'cep' ? '0' :
+                                            (type == 'latlon' ? '-00,00' : '--------'))))
+                        )
 
-                    switch (title) {
-                        case 'E-mail':
-                            isRed = error
+                        switch (title) {
+                            case 'E-mail':
+                                isRed = error
 
-                            break
+                                break
 
-                        case 'CNPJ':
-                            isRed = ((watchValues[0]?.length != 14) || error)
+                            case 'CNPJ':
+                                isRed = ((watchValues[0]?.length != 14) || error)
 
-                            break
+                                break
 
-                        case 'Celular':
-                            isRed = ((watchValues[1]?.length != 9) || error)
+                            case 'Celular':
+                                isRed = ((watchValues[1]?.length != 9) || error)
 
-                            break
+                                break
 
-                        case 'CEP':
-                            isRed = watchValues[2]?.length != 8 || error
+                            case 'CEP':
+                                isRed = watchValues[2]?.length != 8 || error
 
-                            break
+                                break
 
-                        case 'Latitude':
-                            isRed = ((watchValues[3]?.length < 6) || error)
+                            case 'Latitude':
+                                isRed = ((watchValues[3]?.length < 6) || error)
 
-                            break
+                                break
 
-                        case 'Longitude':
-                            isRed = ((watchValues[4]?.length < 6) || error)
+                            case 'Longitude':
+                                isRed = ((watchValues[4]?.length < 6) || error)
 
-                            break
+                                break
 
 
-                        default:
+                            default:
 
-                            break
+                                break
+                        }
+
+                        return (
+                            <InputForm
+                                key={name}
+                                error={isRed}
+                                name={name}
+                                title={title}
+                                type={type}
+                                required={required}
+                                storage={register}
+                                errorStorage={errors}
+                                style={style}
+                                defaultValue={defaultValue}
+                            // helperText={helperText}
+                            />
+
+                        )
+                    })
                     }
 
-                    return (
-                        <InputForm
-                            key={name}
-                            error={isRed}
-                            name={name}
-                            title={title}
-                            type={type}
-                            required={required}
-                            storage={register}
-                            errorStorage={errors}
-                            style={style}
-                            defaultValue={defaultValue}
-                        // helperText={helperText}
-                        />
 
-                    )
-                })
-                }
-
-
-                <button
-                    onClick={handleSubmit(onSubmit)}
-                    style={{ display: 'flex', flexDirection: 'flex-end' }}
-                >
-                    Vai
-                </button>
-            </form>
+                    <button
+                        onClick={handleSubmit(onSubmit)}
+                        style={{ display: 'flex', flexDirection: 'flex-end' }}
+                    >
+                        Vai
+                    </button>
+                </form>
+            </DivStyled>
             <Footer>
             </Footer>
         </>

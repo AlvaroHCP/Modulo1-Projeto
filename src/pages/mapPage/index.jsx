@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import Slider from '@mui/material/Slider';
 import { TextField } from "@mui/material"
+import Button from '@mui/material/Button';
 
 
 import { RefreshPage } from "../../Scripts/RefreshPage"
@@ -107,12 +108,24 @@ function MapPage() {
                         </p>
                         <h3>Se quiser, pode carregar informações já preenchidas clicando no botão abaixo.</h3>
 
-                        <button
+                        <Button
                             onClick={clickAndLoad}
-                            style={{ marginTop: '20px' }}
+                            // autoFocus
+                            sx={{
+                                marginTop: '30px',
+                                mb: '30px',
+                                width: '230px',
+                                height: '30px',
+                                fontSize: '12px',
+                                backgroundColor: 'lightcyan',
+                                // backgroundColor: 'lightskyblue',
+                                border: '1px solid lightblue',
+                                borderRadius: '5px',
+                                // borderColor: 'lightgreen'
+                            }}
                         >
                             Carregar Informações do RJ
-                        </button>
+                        </Button>
 
                         {/* <button
                             onClick={clickAndChange}
@@ -124,7 +137,7 @@ function MapPage() {
 
 
 
-                <Box sx={{ width: 400 }} >
+                <Box sx={{ mt: '50px', width: 400 }} >
                     <Typography id="radius-slider" >
                         Distância (em metros)
                     </Typography>

@@ -138,7 +138,7 @@ function DrugsSubscription() {
         <div>
             <Header></Header>
 
-            <main style={{ display: 'flex', direction: 'column', alignContent: 'center', justifyContent: 'center', flexWrap: 'wrap' }} >
+            <main style={{ minHeight: '65vh', display: 'flex', direction: 'column', alignContent: 'center', justifyContent: 'center', flexWrap: 'wrap' }} >
 
                 <form style={{ border: '2px solid lightseagreen', borderRadius: '10px', marginTop: '20px', width: '570px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
 

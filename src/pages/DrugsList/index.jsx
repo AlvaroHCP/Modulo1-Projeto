@@ -13,6 +13,7 @@ import { RefreshPage } from '../../Scripts/RefreshPage'
 // import { useEffect } from 'react'
 import { useState } from 'react'
 import { Grid } from '@mui/material'
+import Button from '@mui/material/Button';
 
 
 function DrugsListPage() {
@@ -42,12 +43,24 @@ function DrugsListPage() {
                         </p>
                         <h3>Se quiser, pode carregar informações já preenchidas clicando no botão abaixo.</h3>
 
-                        <button
+                        <Button
                             onClick={clickAndLoad}
-                            style={{ marginTop: '20px' }}
+                            // autoFocus
+                            sx={{
+                                marginTop: '30px',
+                                mb: '30px',
+                                width: '320px',
+                                height: '30px',
+                                fontSize: '12px',
+                                backgroundColor: 'lightcyan',
+                                // backgroundColor: 'lightskyblue',
+                                border: '1px solid lightblue',
+                                borderRadius: '5px',
+                                // borderColor: 'lightgreen'
+                            }}
                         >
                             Carregar Informações de Medicamentos
-                        </button>
+                        </Button>
 
                     </div>) :
                     <Grid container
