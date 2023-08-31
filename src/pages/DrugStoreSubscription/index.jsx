@@ -102,25 +102,12 @@ function DrugStoreSubscription() {
         [
 
             {
-                name: 'SocialName',
-                title: 'Razão Social',
-                type: 'text',
-                required: true,
-                error: false,
-            },
-            {
-                name: 'CompanyNumber',
-                title: 'CNPJ',
-                type: 'number',
-                required: true,
-                error: false,
-            },
-            {
                 name: 'CompanyName',
                 title: 'Nome Fantasia',
                 type: 'text',
                 required: true,
                 error: false,
+                width: '300px',
             },
             {
                 name: 'Email',
@@ -128,6 +115,23 @@ function DrugStoreSubscription() {
                 type: 'email',
                 required: true,
                 error: false,
+                width: '300px',
+            },
+            {
+                name: 'SocialName',
+                title: 'Razão Social',
+                type: 'text',
+                required: true,
+                error: false,
+                width: '400px',
+            },
+            {
+                name: 'CompanyNumber',
+                title: 'CNPJ',
+                type: 'number',
+                required: true,
+                error: false,
+                width: '150px',
             },
             {
                 name: 'Phone',
@@ -135,6 +139,7 @@ function DrugStoreSubscription() {
                 type: 'number',
                 required: false,
                 error: false,
+                width: '120px',
             },
             {
                 name: 'CellPhone',
@@ -142,6 +147,7 @@ function DrugStoreSubscription() {
                 type: 'number',
                 required: true,
                 error: false,
+                width: '120px',
             },
             {
                 name: 'PostalCode',
@@ -149,6 +155,7 @@ function DrugStoreSubscription() {
                 type: 'number',
                 required: true,
                 error: false,
+                width: '100px',
             },
             {
                 name: 'Adress',
@@ -156,6 +163,7 @@ function DrugStoreSubscription() {
                 type: 'text',
                 required: true,
                 error: false,
+                width: '300px',
             },
             {
                 name: 'Number',
@@ -163,27 +171,7 @@ function DrugStoreSubscription() {
                 type: 'number',
                 required: true,
                 error: false,
-            },
-            {
-                name: 'Neighborhood',
-                title: 'Bairro',
-                type: 'text',
-                required: true,
-                error: false,
-            },
-            {
-                name: 'City',
-                title: 'Cidade',
-                type: 'text',
-                required: true,
-                error: false,
-            },
-            {
-                name: 'Estate',
-                title: 'Estado',
-                type: 'text',
-                required: true,
-                error: false,
+                width: '100px',
             },
             {
                 name: 'AditionalInfo',
@@ -191,6 +179,31 @@ function DrugStoreSubscription() {
                 type: 'text',
                 required: false,
                 error: false,
+                width: '200px',
+            },
+            {
+                name: 'Neighborhood',
+                title: 'Bairro',
+                type: 'text',
+                required: true,
+                error: false,
+                width: '200px',
+            },
+            {
+                name: 'City',
+                title: 'Cidade',
+                type: 'text',
+                required: true,
+                error: false,
+                width: '200px',
+            },
+            {
+                name: 'Estate',
+                title: 'Estado',
+                type: 'text',
+                required: true,
+                error: false,
+                width: '100px',
             },
             {
                 name: 'Latitude',
@@ -198,6 +211,7 @@ function DrugStoreSubscription() {
                 type: 'latlon',
                 required: true,
                 error: false,
+                width: '100px',
             },
             {
                 name: 'Longitude',
@@ -205,14 +219,27 @@ function DrugStoreSubscription() {
                 type: 'latlon',
                 required: true,
                 error: false,
+                width: '100px',
             },
 
         ]
 
 
-    const style = { width: '200px', margin: '30px' }
-
-
+    const style = (width, index) => {
+        const marginAddress = '120px'
+        const marginGeoLocation = '200px'
+        if (index < 7) {
+            return ({ width: width, margin: '30px' })
+        } else if (index == 7 || index == 9 || index == 11) {
+            return ({ width: width, margin: '30px', marginLeft: marginAddress })
+        } else if (index == 8 || index == 10 || index == 12) {
+            return ({ width: width, margin: '30px', marginRight: marginAddress })
+        } else if (index == 13) {
+            return ({ width: width, margin: '30px', marginLeft: marginGeoLocation })
+        } else {
+            return ({ width: width, margin: '30px', marginRight: marginGeoLocation })
+        }
+    }
 
 
     return (
@@ -221,9 +248,13 @@ function DrugStoreSubscription() {
             </Header>
 
             <DivStyled>
-                <form >
-
-                    {fields.map(({ name, title, type, required, error }) => {
+                <form
+                    style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}
+                >
+                    <h3
+                        style={{ width: '100%', textAlign: 'start' }}
+                    >Dados da Empresa:</h3>
+                    {fields.map(({ name, title, type, required, error, width }, index) => {
 
                         let isRed
 
@@ -232,7 +263,7 @@ function DrugStoreSubscription() {
                                 (type == 'email' ? 'nome@email.com' :
                                     (type == 'number' ? '0' :
                                         (type == 'cep' ? '0' :
-                                            (type == 'latlon' ? '-00,00' : '--------'))))
+                                            (type == 'latlon' ? '-00.00' : '--------'))))
                         )
 
                         switch (title) {
@@ -272,20 +303,40 @@ function DrugStoreSubscription() {
                                 break
                         }
 
+                        let printH3
+                        if (index == 7) {
+                            printH3 = 'Endereço:'
+                        } else if (index == 13) {
+                            printH3 = 'Geo-localização:'
+                        }
+
+                        const divisors = (printH3) => {
+                            return (
+                                <h3
+                                    style={{ width: '100%', textAlign: 'start' }}
+                                >
+                                    {printH3}
+                                </h3>
+                            )
+                        }
+
                         return (
-                            <InputForm
-                                key={name}
-                                error={isRed}
-                                name={name}
-                                title={title}
-                                type={type}
-                                required={required}
-                                storage={register}
-                                errorStorage={errors}
-                                style={style}
-                                defaultValue={defaultValue}
-                            // helperText={helperText}
-                            />
+                            <>
+                                {!!printH3 ? divisors(printH3) : <></>}
+                                <InputForm
+                                    key={index}
+                                    error={isRed}
+                                    name={name}
+                                    title={title}
+                                    type={type}
+                                    required={required}
+                                    storage={register}
+                                    errorStorage={errors}
+                                    style={style(width, index)}
+                                    defaultValue={defaultValue}
+                                // helperText={helperText}
+                                />
+                            </>
 
                         )
                     })
@@ -308,7 +359,7 @@ function DrugStoreSubscription() {
                         </Button>
                     </ButtonArea>
                 </form>
-            </DivStyled>
+            </DivStyled >
             <Footer>
             </Footer>
         </>

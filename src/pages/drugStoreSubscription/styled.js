@@ -2,6 +2,14 @@ import styled from 'styled-components'
 
 export const DivStyled = styled.div`
 min-height: 65vh;
+width: 740px;
+/* margin-left: 340px; */
+margin-left: calc((100% - 800px) / 2);
+/* display: flex;
+place-content: center; */
+/* direction: column; */
+/* justify-self: center; */
+/* align-self: center; */
 `
 
 export const ButtonArea = styled.div`
@@ -15,7 +23,8 @@ align-items: center;
 
 button{
     width: 250px;
-    height: 40px;
+    height: 35px;
+    font-size: 12px;
     background-color: lightcyan;
     border: 2px solid lightblue;
 
