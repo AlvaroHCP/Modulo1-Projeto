@@ -4,6 +4,7 @@ import { InputForm } from "../../components/InputField"
 import { TextField } from '@mui/material'
 import { useForm } from "react-hook-form"
 
+import Button from '@mui/material/Button';
 
 function DrugsSubscription() {
 
@@ -141,7 +142,7 @@ function DrugsSubscription() {
 
                 <form style={{ border: '2px solid lightseagreen', borderRadius: '10px', marginTop: '20px', width: '570px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
 
-                    <h1 style={{ marginTop: '10px', marginBottom: '-10px' }}>Cadastre aqui os Medicamentos:</h1>
+                    <h1 style={{ marginTop: '20px', marginBottom: '-10px' }}>Cadastre aqui os Medicamentos:</h1>
 
                     {fields.map(({ name, title, type, required, error, field, options, width }, index) => {
 
@@ -257,17 +258,35 @@ function DrugsSubscription() {
                     }
 
 
-                    <button
+                    {/* <button
                         onClick={handleSubmit(onSubmit)}
                         style={{ marginTop: '40px', marginBottom: '20px' }}
                     >
                         Cadastrar Medicamento
-                    </button>
+                    </button> */}
+                    <Button
+                        onClick={handleSubmit(onSubmit)}
+                        // autoFocus
+                        sx={{
+                            marginTop: '30px',
+                            mb: '30px',
+                            width: '250px',
+                            height: '35px',
+                            fontSize: '12px',
+                            // backgroundColor: 'lightcyan',
+                            // backgroundColor: 'lightskyblue',
+                            border: '1px solid lightblue',
+                            borderRadius: '5px',
+                            // borderColor: 'lightgreen'
+                        }}
+                    >
+                        Cadastrar Medicamento
+                    </Button>
                 </form>
             </main >
 
             <Footer></Footer>
-        </div>
+        </div >
     )
 }
 
