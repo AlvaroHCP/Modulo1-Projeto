@@ -5,6 +5,7 @@ import { TileLayer, Circle } from 'react-leaflet';
 import { useState, useEffect } from 'react';
 
 import { useMap } from "react-leaflet";
+import { Icon } from 'leaflet';
 // import { useMapEvent } from "react-leaflet";
 
 
@@ -94,6 +95,14 @@ function Map({ position, addressList, radiusState, scaleState }) {
         // console.log(scale, radius);
     }, [radiusState])
 
+
+
+    const customIcon = new Icon({
+        iconUrl: "https://www.clipartmax.com/png/small/189-1895092_pill-png-capsule-clipart.png",
+        iconSize: [38, 38],
+    })
+
+
     return (
         <MapContainerStyled center={position} zoom={scale} scrollWheelZoom={true}>
             {/* {console.log("Radius = ", radius, " Scale = ", scale)} */}
@@ -110,7 +119,9 @@ function Map({ position, addressList, radiusState, scaleState }) {
             {addressList.map((address, index) => {
                 // console.log(address.Latitude, address.Longitude)
                 return (
-                    <Marker position={[address.Latitude, address.Longitude]} key={index}  >
+                    <Marker position={[address.Latitude, address.Longitude]} key={index}
+                        icon={customIcon}
+                    >
 
                         <Tooltip>
                             {address?.name ? address.name :

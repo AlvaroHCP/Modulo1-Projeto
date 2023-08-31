@@ -99,7 +99,7 @@ function MapPage() {
             <DivStyled>
 
                 {loadedData.length == 0 ?
-                    (<div style={{ width: '50%', margin: '40px', textAlign: 'center' }}>
+                    (<div style={{ width: '50%', marginTop: '40px', textAlign: 'center' }}>
                         <h2>
                             Não Há Farmácias Cadastradas!
                         </h2>
