@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { Modal } from "../../components/ModalLogin";
 import { useState } from "react";
 import { ButtonAreaStyled } from "../../components/ModalLogin/styled";
+import { ButtonArea } from './styled'
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 
@@ -37,7 +38,9 @@ function LoginPage() {
     return (
         <DivStyled>
             <LoginStyled >
-                <h1>Login Page</h1>
+                <h1
+                    style={{ marginLeft: '0px', paddingLeft: '0px', }}
+                >DevInPharmacy LTDA</h1>
                 <FormStyled>
                     <label htmlFor="email">E-mail:</label>
                     <input
@@ -82,14 +85,15 @@ function LoginPage() {
                     )}
 
                     <Link to={"#"}>Esqueci minha senha?</Link>
-                    <ButtonDiv>
-                        <button onClick={
-                            handleSubmit(onSubmit)
 
-                        } >
+                    <ButtonArea>
+                        <Button
+                            onClick={handleSubmit(onSubmit)}
+                            autoFocus
+                        >
                             Entrar
-                        </button>
-                    </ButtonDiv>
+                        </Button>
+                    </ButtonArea>
 
                     {/* {openModal == true ? <Modal /> : <></>} */}
 

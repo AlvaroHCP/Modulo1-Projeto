@@ -28,14 +28,14 @@ border: 3px solid green;
 border-radius: 10px;
 
 h1 {
-    width: 200px;
+    width: 300px;
     
     text-align: center;
     margin: 0px;
+    margin-bottom: 30px;
     padding-top: 10px;
     padding-bottom: 30px;
     border-bottom: 2px solid aquamarine;
-    margin-bottom: 30px;
 }
 `
 
@@ -89,3 +89,29 @@ button {
 `
 
 export { DivStyled, LoginStyled, FormStyled, ButtonDiv }
+
+
+
+export const ButtonArea = styled.div`
+
+margin-top: 40px;
+margin-bottom: 20px;
+width: 100%;
+display: flex;
+flex-direction: column;
+/* align-self: center; */
+align-items: flex-end;
+
+button{
+    width: 120px;
+    height: 35px;
+    font-size: 12px;
+    background-color: lightcyan;
+    border: 2px solid lightblue;
+
+    :hover{
+        background-color: lightgreen;
+
+    }
+}
+`
