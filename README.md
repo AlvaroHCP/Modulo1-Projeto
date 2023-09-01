@@ -55,7 +55,7 @@ O projeto foi publicado no [Vercel](https://vercel.com/), no link [Medication Ma
 
 Ao acessar o sistema, O usuário começa na tela de Login:
 
-![Login](Captura de Tela 2023-08-31 às 22.15.23.png)
+![Login](<img src="Captura de Tela 2023-08-31 às 22.15.23.png">)
 
 2. **Funcionalidade Extra: Modal de Login Efetuado com Sucesso**
 Ao efetuar o login com êxito, o usuário abre um Modal
