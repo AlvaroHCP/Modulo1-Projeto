@@ -36,3 +36,45 @@ Falemos mais das telas do sistema, e de como utilizá-lo.
 O projeto foi publicado no [Vercel](https://vercel.com/), no link [Medication Management](https://modulo1-projeto-alvaro.vercel.app/). 
 
 Ao acessar o sistema, O usuário começa na tela de Login:
+
+![Login](<Captura de Tela 2023-08-31 às 22.15.23.png>)
+
+Ao efetuar o login com êxito, o usuário abre um Modal
+
+![Login-Successfull](<Captura de Tela 2023-08-31 às 22.15.50.png>)
+
+onde ele pode escolher se vai para a página de Listagem de Medicamentos ou para a página de Mapa de Farmácias.
+
+Indo para a Listagem de Medicamentos, abre a seguinte tela:
+
+![DrugsList](<Captura de Tela 2023-08-31 às 22.16.14.png>)
+
+Já se escolher o Mapa de Farmácias, a tela é:
+
+![Map](<Captura de Tela 2023-08-31 às 22.17.05.png>)
+![Map-Bottom](<Captura de Tela 2023-08-31 às 22.17.14.png>)
+
+onde esse comprimido marca a posição inicial do usuário, que neste projeto é no RJ.
+
+
+Como a página de Medicamentos está sem nenhum tipo de produto, é necessário cadastrar um na página de Cadastro de Medicamentos:
+
+![Drugs-Subscription](<Captura de Tela 2023-08-31 às 22.17.38.png>)
+
+e após cadastrar os medicamentos, ou clicar no botão que lê os dados previamente carregados no sistema, o usuário pode ir para a página de Medicamentos e encontrará 
+
+![Loaded-Data](<Captura de Tela 2023-08-31 às 22.18.07.png>)
+
+Onde os cards de medicamentos contém as informações dos produtos, e ao clicar em cada um dos cards, o usuário pode ler a descrição de cada medicamento. 
+
+Há também a opção de favoritar cada produto clicando no icone de coração, no canto superior direito de cada card.
+
+Para o cadastro de Farmácias da rede DevInPharmacy LTDA, o usuário precisa ir à página de cadastro de Farmácias:
+
+![DrugStore-Subscription](<Captura de Tela 2023-08-31 às 22.19.36.png>)
+![DrugStore-Subscription-Bottom](<Captura de Tela 2023-08-31 às 22.19.46.png>)
+
+E ao cadastrar uma farmácia, ou ler os dados previamente carregados no sistema, o usuário pode ver a página de Mapa de Farmácias da seguinte forma:
+
+![Map-Radius-0](<Captura de Tela 2023-08-31 às 22.20.14.png>)
+
