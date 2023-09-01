@@ -60,31 +60,31 @@ Ao acessar o sistema, O usuário começa na tela de Login:
 2. **Funcionalidade Extra: Modal de Login Efetuado com Sucesso**
 Ao efetuar o login com êxito, o usuário abre um Modal
 
-![Login-Successfull](<./src/images/Readme/Captura de Tela 2023-08-31 às 22.15.50.png>)
+![Login-Successfull](<./src/images/Readme/Captura22.15.50.png>)
 
 onde ele pode escolher se vai para a página de Listagem de Medicamentos ou para a página de Mapa de Farmácias.
 
 3. **Lista de Medicamentos**
 Indo para a Listagem de Medicamentos, abre a seguinte tela:
 
-![DrugsList](<./src/images/Readme/Captura de Tela 2023-08-31 às 22.16.14.png>)
+![DrugsList](<./src/images/Readme/Captura22.16.14.png>)
 
 4. **Mapa de Farmácias**
 Já se escolher o Mapa de Farmácias, a tela é:
 
-![Map](<./src/images/Readme/Captura de Tela 2023-08-31 às 22.17.05.png>)
-![Map-Bottom](<./src/images/Readme/Captura de Tela 2023-08-31 às 22.17.14.png>)
+![Map](<./src/images/Readme/Captura22.17.05.png>)
+![Map-Bottom](<./src/images/Readme/Captura22.17.14.png>)
 
 onde esse comprimido marca a posição inicial do usuário, que neste projeto é no RJ.
 
 5. **Cadastro de Medicamentos**
 Como a página de Medicamentos está sem nenhum tipo de produto, é necessário cadastrar um na página de Cadastro de Medicamentos:
 
-![Drugs-Subscription](<./src/images/Readme/Captura de Tela 2023-08-31 às 22.17.38.png>)
+![Drugs-Subscription](<./src/images/Readme/Captura22.17.38.png>)
 
 e após cadastrar os medicamentos, ou clicar no botão que lê os dados previamente carregados no sistema, o usuário pode ir para a página de Medicamentos e encontrará 
 
-![Loaded-Data](<./src/images/Readme/Captura de Tela 2023-08-31 às 22.18.07.png>)
+![Loaded-Data](<./src/images/Readme/Captura22.18.07.png>)
 
 Onde os cards de medicamentos contém as informações dos produtos, e ao clicar em cada um dos cards, o usuário pode ler a descrição de cada medicamento. 
 
@@ -93,12 +93,12 @@ Há também a opção de favoritar cada produto clicando no icone de coração, 
 6. **Cadastro de Farmácias**
 Para o cadastro de Farmácias da rede DevInPharmacy LTDA, o usuário precisa ir à página de cadastro de Farmácias:
 
-![DrugStore-Subscription](<./src/images/Readme/Captura de Tela 2023-08-31 às 22.19.36.png>)
-![DrugStore-Subscription-Bottom](<./src/images/Readme/Captura de Tela 2023-08-31 às 22.19.46.png>)
+![DrugStore-Subscription](<./src/images/Readme/Captura22.19.36.png>)
+![DrugStore-Subscription-Bottom](<./src/images/Readme/Captura22.19.46.png>)
 
 E ao cadastrar uma farmácia, ou ler os dados previamente carregados no sistema, o usuário pode ver a página de Mapa de Farmácias da seguinte forma:
 
-![Map-Radius-0](<./src/images/Readme/Captura de Tela 2023-08-31 às 22.20.14.png>)
+![Map-Radius-0](<./src/images/Readme/Captura22.20.14.png>)
 
 
 7. **Funcionalidade extra: Escala do Mapa variando automaticamente com a mudança do Raio**
@@ -108,15 +108,15 @@ A medida que o raio de abrangência vai aumentando, o mapa vai ficando conforme 
 
 Para um Raio = 373 metros, temos:
 
-![Map-Radius-373m](<./src/images/Readme/Captura de Tela 2023-08-31 às 22.20.27.png>)
+![Map-Radius-373m](<./src/images/Readme/Captura22.20.27.png>)
 
 Raio = 1009 metros:
 
-![Map-Radius-1009m](<./src/images/Readme/Captura de Tela 2023-08-31 às 22.20.57.png>)
+![Map-Radius-1009m](<./src/images/Readme/Captura22.20.57.png>)
 
 Raio = 2000 metros:
 
-![Map-Radius-2000m](<./src/images/Readme/Captura de Tela 2023-08-31 às 22.21.39.png>)
+![Map-Radius-2000m](<./src/images/Readme/Captura22.21.39.png>)
 
 Nesse caso, já percebemos que todas as farmácias cadastradas foram enquadradas nessa escala. 
 
@@ -128,10 +128,10 @@ Neste sistema o Raio máximo de busca foi limitado a 2000 metros por ser uma dis
 Existe também no cabeçalho do sistema, um botão de Dark Mode, que ao ser clicado se torna um botão de Light Mode, e toda a aplicação fica no modo noturno:
 
 - **Página de Medicamentos**
-![Dark-DrugsList](<./src/images/Readme/Captura de Tela 2023-08-31 às 22.22.42.png>)
+![Dark-DrugsList](<./src/images/Readme/Captura22.22.42.png>)
 
 - **Página de Cadastro de Medicamentos**
-![Dark-DrugsSubscription](<./src/images/Readme/Captura de Tela 2023-08-31 às 22.22.56.png>)
+![Dark-DrugsSubscription](<./src/images/Readme/Captura22.22.56.png>)
 
 assim como as outras páginas, que seguem exatamente o mesmo tema.
 
@@ -141,7 +141,7 @@ Ao clicar no botão de Light Mode, todo o tema da aplicação volta ao modo trad
 
 Foi implementada nesta aplicação ainda, uma tela de página não encontrada, 404 - Not Found, do tipo:
 
-![404-NotFound](<./src/images/Readme/Captura de Tela 2023-08-31 às 22.53.06.png>)
+![404-NotFound](<./src/images/Readme/Captura22.53.06.png>)
 
 que foi escolhida uma cor rosa mais para a temperatura quente, e tom pastel, para trazer um acolhimento e um tom clássico para a página, que não precisa ser sem graça ou sem identidade.
 
