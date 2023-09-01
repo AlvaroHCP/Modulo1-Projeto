@@ -33,6 +33,22 @@ Falemos mais das telas do sistema, e de como utilizá-lo.
 
 ### Por dentro do sistema
 
+Para rodar o sistema localmente, o usuário precisa clonar o repositório do GitHub onde está o projeto fazendo
+
+- git clone https://github.com/AlvaroHCP/Modulo1-Projeto.git
+
+Após isso, deve entrar no diretório clonado e iniciar os comandos, através do console, de instalação das dependências do projeto:
+
+- npm install
+
+E após a instalação das dependências, deve rodar no servidor local utilizando o comando
+
+- npm run dev
+
+No terminal será gerado um link para o navegador, e ao visitar esse link, o projeto já poderá ser executado normalmente.
+
+Caso o usuário prefira, pode rodar o sistema diretamente do servidor de publicação do projeto.
+
 O projeto foi publicado no [Vercel](https://vercel.com/), no link [Medication Management](https://modulo1-projeto-alvaro.vercel.app/). 
 
 1. **Login**
@@ -131,3 +147,13 @@ que foi escolhida uma cor rosa mais para a temperatura quente, e tom pastel, par
 
 Essa página leva o usuário automaticamente para a Lista de Medicamentos após 5 segundos, ou à última página, caso o botão seja pressionado.
 
+## O que pode Melhorar?
+ 
+ Pontos que devem ser melhorados no projeto incluem:
+- Ajuste da utilização do favorito dos cards de medicamentos, que atualizam a página ao serem clicados
+- Ao atualizar a página em Dark Mode, a aplicação volta para o Light Mode
+- Melhorar as RegEx dos campos de input da aplicação para serem mais eficientes
+- Melhorar a estilização dos componentes
+- Componentizar melhor o código
+ etc...
+ 
